@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" preserveAspectRatio="xMidYMid slice">
+<rect width="800" height="500" fill="#eaf0f3"/>
+<path d="M-20,360 C150,300 260,420 420,350 S690,250 820,300 L820,380 C690,330 560,430 420,430 S130,380 -20,440 Z" fill="#b9d8ea"/>
+<rect x="470" y="60" width="240" height="120" rx="10" fill="#cfe5d0"/>
+<rect x="40" y="40" width="120" height="90" rx="6" fill="#dbe4e8"/>
+<rect x="190" y="40" width="120" height="90" rx="6" fill="#dbe4e8"/>
+<rect x="340" y="40" width="100" height="90" rx="6" fill="#dbe4e8"/>
+<rect x="40" y="160" width="120" height="100" rx="6" fill="#dbe4e8"/>
+<rect x="190" y="160" width="120" height="100" rx="6" fill="#dbe4e8"/>
+<rect x="340" y="160" width="100" height="100" rx="6" fill="#dbe4e8"/>
+<rect x="470" y="210" width="110" height="70" rx="6" fill="#dbe4e8"/>
+<rect x="610" y="210" width="160" height="70" rx="6" fill="#dbe4e8"/>
+<line x1="170" y1="0" x2="170" y2="290" stroke="#fff" stroke-width="14"/>
+<line x1="320" y1="0" x2="320" y2="290" stroke="#fff" stroke-width="14"/>
+<line x1="455" y1="0" x2="455" y2="290" stroke="#fff" stroke-width="14"/>
+<line x1="595" y1="0" x2="595" y2="290" stroke="#fff" stroke-width="14"/>
+<line x1="0" y1="145" x2="800" y2="145" stroke="#fff" stroke-width="14"/>
+<line x1="0" y1="285" x2="800" y2="285" stroke="#fff" stroke-width="14"/>
+<line x1="0" y1="470" x2="800" y2="470" stroke="#fff" stroke-width="10" stroke-dasharray="26 14"/>
+<rect x="60" y="190" width="64" height="40" rx="8" fill="#0c2233"/><text x="92" y="218" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">Rail</text>
+<text x="24" y="272" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#27415a" stroke="#eaf0f3" stroke-width="7" paint-order="stroke" stroke-linejoin="round">Northbank station</text>
+<text x="400" y="332" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#27415a" stroke="#eaf0f3" stroke-width="7" paint-order="stroke" stroke-linejoin="round" text-anchor="middle">Riverside Walk</text>
+<g transform="translate(520 195)"><path d="M0,0 C-34,-40 -40,-70 -40,-84 A40,40 0 1 1 40,-84 C40,-70 34,-40 0,0 Z" fill="#c92f26" stroke="#fff" stroke-width="5"/><circle cx="0" cy="-84" r="16" fill="#fff"/></g>
+<text x="520" y="30" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="800" fill="#0c2233" stroke="#eaf0f3" stroke-width="7" paint-order="stroke" stroke-linejoin="round" text-anchor="middle">Northbank Sports Hub</text>
+</svg>

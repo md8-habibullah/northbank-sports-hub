@@ -1,0 +1,9 @@
+node_modules/
+.site/
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db
+*.asc
+*.gpg
+*.rev

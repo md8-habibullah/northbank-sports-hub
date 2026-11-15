@@ -1,0 +1,19 @@
+name: Check the site
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Fails the run on a broken link, missing image, duplicate id,
+      # unlabelled form field or unbalanced tag.
+      - name: Check pages, links and images
+        run: python3 tools/check_site.py .

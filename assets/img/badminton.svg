@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" preserveAspectRatio="xMidYMid slice">
+<rect width="600" height="400" fill="#1f5f50"/>
+<rect x="60" y="91" width="480" height="218" fill="#2a7d68"/>
+<rect x="60" y="91" width="480" height="218" fill="none" stroke="#fff" stroke-width="3"/>
+<line x1="60" y1="107" x2="540" y2="107" stroke="#fff" stroke-width="3"/><line x1="60" y1="293" x2="540" y2="293" stroke="#fff" stroke-width="3"/>
+<line x1="229" y1="91" x2="229" y2="309" stroke="#fff" stroke-width="3"/><line x1="371" y1="91" x2="371" y2="309" stroke="#fff" stroke-width="3"/>
+<line x1="87" y1="91" x2="87" y2="309" stroke="#fff" stroke-width="3"/><line x1="513" y1="91" x2="513" y2="309" stroke="#fff" stroke-width="3"/>
+<line x1="60" y1="200" x2="229" y2="200" stroke="#fff" stroke-width="3"/><line x1="371" y1="200" x2="540" y2="200" stroke="#fff" stroke-width="3"/>
+<line x1="300" y1="78" x2="300" y2="322" stroke="#f1f1f1" stroke-width="5" stroke-dasharray="3 3"/>
+<circle cx="300" cy="78" r="6" fill="#222"/><circle cx="300" cy="322" r="6" fill="#222"/>
+<polygon points="190,150 222,136 222,164" fill="rgba(255,255,255,.92)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+<line x1="200" y1="150" x2="222" y2="150" stroke="#9db8ae" stroke-width="2"/>
+<circle cx="184" cy="150" r="7" fill="#f0b323" stroke="#fff" stroke-width="2"/>
+</svg>

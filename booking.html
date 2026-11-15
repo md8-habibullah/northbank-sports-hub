@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a facility or event | Northbank Sports Hub</title>
+<meta name="description" content="Book a pitch, court, lane or room, or get tickets and entries for Northbank Sports Hub events.">
+<meta name="theme-color" content="#0c2233">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/pricing.js" defer></script>
+<script src="assets/js/booking.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="assets/img/logo.svg" width="40" height="40" alt=""><span>Northbank<br>Sports Hub</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-open">Menu</span><span class="nav-toggle-close">Close</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="booking.html" aria-current="page">Book now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-head" aria-labelledby="page-title">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">Book</span></li></ol></nav>
+    <h1 id="page-title">Book a facility or event</h1>
+    <p class="lead">Choose what you want, see the price as you go, and get a booking summary at the end.</p>
+  </div>
+</section>
+<section class="section" aria-label="Booking form">
+  <div class="wrap">
+    <noscript>
+      <p class="callout">This form needs JavaScript to work out your price. Without it, please call us on <a href="tel:+442079460123">020 7946 0123</a> to book.</p>
+    </noscript>
+
+    <form id="booking-form" class="booking-grid" method="get" action="confirmation.html">
+      <div class="booking-fields">
+
+        <fieldset>
+          <legend>What would you like to book?</legend>
+          <div class="choice-cards">
+            <label class="choice-card">
+              <input type="radio" name="mode" value="hire" checked>
+              <span class="cc-text"><strong>Hire a facility</strong><span class="cc-hint">A pitch, court, lane, track or room, by the hour.</span></span>
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="mode" value="event">
+              <span class="cc-text"><strong>Event tickets or entry</strong><span class="cc-hint">Watch an event, or enter as a player or team.</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset id="hire-fields">
+          <legend>Facility and time</legend>
+          <div class="field">
+            <label for="facility">Facility</label>
+            <select id="facility" name="facility">
+              <option value="pitch">5-a-side pitch</option>
+<option value="basketball">Basketball court</option>
+<option value="badminton">Badminton court</option>
+<option value="tennis">Tennis court</option>
+<option value="pool">Swimming lane</option>
+<option value="track">Running track</option>
+<option value="room">Function room</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="field">
+              <label for="start">Start time</label>
+              <select id="start" name="start" required>
+                <option value="">Choose a time</option>
+                <option value="7">07:00</option>
+<option value="8">08:00</option>
+<option value="9">09:00</option>
+<option value="10">10:00</option>
+<option value="11">11:00</option>
+<option value="12">12:00</option>
+<option value="13">13:00</option>
+<option value="14">14:00</option>
+<option value="15">15:00</option>
+<option value="16">16:00</option>
+<option value="17">17:00</option>
+<option value="18">18:00</option>
+<option value="19">19:00</option>
+<option value="20">20:00</option>
+<option value="21">21:00</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="hours">Length</label>
+              <select id="hours" name="hours">
+                <option value="1">1 hour</option>
+                <option value="2">2 hours</option>
+                <option value="3">3 hours</option>
+                <option value="4">4 hours</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="units">How many</label>
+              <input type="number" id="units" name="units" min="1" max="2" value="1" inputmode="numeric" required aria-describedby="units-hint">
+              <span class="hint" id="units-hint"></span>
+            </div>
+          </div>
+          <div class="choice">
+            <input type="checkbox" id="equipment" name="equipment">
+            <label for="equipment">Add the equipment pack, £6 <span class="hint">Balls, bibs, rackets or cones, to suit your facility.</span></label>
+          </div>
+          <div class="choice">
+            <input type="checkbox" id="member" name="member">
+            <label for="member">I am a member and will bring my card <span class="hint">Takes 15% off the hire price.</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset id="event-fields" hidden disabled>
+          <legend>Event and tickets</legend>
+          <div class="field">
+            <label for="event">Event</label>
+            <select id="event" name="event" aria-describedby="event-note">
+              <option value="open-day">Winter Open Day (28 Nov)</option>
+<option value="winter-cup">Winter Five-a-side Cup (5 Dec)</option>
+<option value="doubles">Open Badminton Doubles (13 Dec)</option>
+<option value="swim">Swim-a-thon (19 Dec)</option>
+<option value="run">New Year 5K Fun Run (1 Jan)</option>
+<option value="slam">Junior Basketball Slam (9 Jan)</option>
+<option value="champs">Club Tennis Championships (23 Jan)</option>
+<option value="futsal">Schools Futsal Finals (6 Feb)</option>
+            </select>
+            <span class="hint" id="event-note"></span>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="t-adult">Adult, £6</label><input type="number" id="t-adult" name="adult" min="0" max="20" value="0" inputmode="numeric" aria-describedby="t-adult-hint"><span class="hint" id="t-adult-hint">Aged 16 and over</span></div>
+<div class="field"><label for="t-concession">Concession, £4</label><input type="number" id="t-concession" name="concession" min="0" max="20" value="0" inputmode="numeric" aria-describedby="t-concession-hint"><span class="hint" id="t-concession-hint">Students and over-60s, with ID</span></div>
+<div class="field"><label for="t-family">Family, £15</label><input type="number" id="t-family" name="family" min="0" max="20" value="0" inputmode="numeric" aria-describedby="t-family-hint"><span class="hint" id="t-family-hint">Up to 2 adults and 2 children</span></div>
+<div class="field"><label for="t-under12">Under 12, free</label><input type="number" id="t-under12" name="under12" min="0" max="20" value="0" inputmode="numeric" aria-describedby="t-under12-hint"><span class="hint" id="t-under12-hint">Free, but needs a ticket</span></div>
+          </div>
+          <div class="field">
+            <label for="entries" id="entries-label">Entries</label>
+            <input type="number" id="entries" name="entries" min="0" max="20" value="0" inputmode="numeric" aria-describedby="entries-hint">
+            <span class="hint" id="entries-hint"></span>
+          </div>
+        </fieldset>
+
+        <p class="form-error" id="form-error" aria-live="polite"></p>
+
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span class="hint">Optional</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="notes">Anything we should know? <span class="hint">Optional. For example, access needs or the number of children.</span></label>
+            <textarea id="notes" name="notes" rows="3"></textarea>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="estimate-col">
+        <aside class="estimate" aria-labelledby="est-title">
+          <h2 id="est-title">Your price</h2>
+          <p class="empty" id="est-empty">Choose your options and the price will appear here.</p>
+          <ul id="est-lines"></ul>
+          <p class="total"><span>Total to pay at the desk</span><output id="est-total">£0</output></p>
+          <div class="choice terms-check">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I have read the <a href="terms.html" target="_blank" rel="noopener">terms and conditions</a> (opens in a new tab)</label>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Review my booking</button>
+          <p class="small">Nothing is charged online. You pay when you arrive.</p>
+        </aside>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer on-ink">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
+      <p>A community sports centre on the river: pitches, a sports hall, tennis courts, a 25 m pool and a running track.</p>
+    </div>
+    <nav aria-label="Site pages">
+      <h2 class="footer-h">Explore</h2>
+      <ul class="footer-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="booking.html">Book now</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms and conditions</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="footer-h">Visit us</h2>
+      <address>12 Riverside Walk<br>Northbank<br>NB1 4AB</address>
+      <p>Phone: <a href="tel:+442079460123">020 7946 0123</a><br>Email: <a href="mailto:hello@northbank-hub.example">hello@northbank-hub.example</a></p>
+    </div>
+    <div>
+      <h2 class="footer-h">Opening hours</h2>
+      <dl class="footer-hours">
+        <div><dt>Mon to Fri</dt><dd>07:00 to 22:00</dd></div>
+        <div><dt>Sat and Sun</dt><dd>08:00 to 20:00</dd></div>
+        <div><dt>25 and 26 Dec</dt><dd>Closed</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
+    <ul>
+      <li><a href="terms.html">Terms and conditions</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
