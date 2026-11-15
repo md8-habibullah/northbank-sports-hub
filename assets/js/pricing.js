@@ -144,9 +144,66 @@
     return { title: ev.name, lines: lines, total: total, count: count };
   }
 
+  /* The moment a booking starts, as a Date */
+  function startOf(b) {
+    var d;
+    if (b.type === 'hire') {
+      d = parseDate(b.sel.date);
+      d.setHours(b.sel.start, 0, 0, 0);
+    } else {
+      var ev = D.events[b.sel.event];
+      var t = ev.startTime.split(':');
+      d = parseDate(ev.date);
+      d.setHours(+t[0], +t[1], 0, 0);
+    }
+    return d;
+  }
+
+  /* Cancellation rules from the terms page: hire needs 48 hours' notice, events 7 days'.
+     Later than that, the booking can still be cancelled but the full price is still due. */
+  function cancellation(b, now) {
+    if (b.status === 'cancelled') return { allowed: false, message: 'This booking is already cancelled.' };
+    var hoursLeft = (startOf(b) - (now || new Date())) / 3600000;
+    if (hoursLeft <= 0) {
+      return { allowed: false, message: 'This booking has already started or finished, so it cannot be cancelled.' };
+    }
+    var notice = b.type === 'hire' ? 48 : 168;
+    var noticeText = b.type === 'hire' ? '48 hours' : '7 days';
+    if (hoursLeft >= notice) {
+      return { allowed: true, fee: 0, message: 'Free cancellation: you are more than ' + noticeText + ' ahead.' };
+    }
+    return {
+      allowed: true,
+      fee: b.total,
+      message: 'Late cancellation: it is less than ' + noticeText + ' away, so ' +
+        (b.total ? money(b.total) + ' is still payable at the front desk.' : 'nothing is payable, but please free the place for others.')
+    };
+  }
+
+  /* Tiny helper for building page content safely: text always goes in as text, never as HTML */
+  function el(tag, props, kids) {
+    var n = document.createElement(tag);
+    if (props) {
+      Object.keys(props).forEach(function (k) {
+        var v = props[k];
+        if (k === 'text') n.textContent = v;
+        else if (k === 'class') n.className = v;
+        else if (k.slice(0, 2) === 'on') n.addEventListener(k.slice(2), v);
+        else if (v === true) n.setAttribute(k, '');
+        else if (v !== false && v !== null && v !== undefined) n.setAttribute(k, v);
+      });
+    }
+    (kids || []).forEach(function (c) {
+      if (c === null || c === undefined) return;
+      n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return n;
+  }
+
   window.NB = {
     money: money, fmt: fmt, pad: pad, parseDate: parseDate, todayStr: todayStr, addDays: addDays,
     isWeekend: isWeekend, formatDate: formatDate, plural: plural,
-    slotProblem: slotProblem, hire: hire, tickets: tickets
+    slotProblem: slotProblem, hire: hire, tickets: tickets,
+    startOf: startOf, cancellation: cancellation, el: el
   };
 }());

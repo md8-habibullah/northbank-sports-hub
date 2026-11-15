@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My bookings | Northbank Sports Hub</title>
+<meta name="description" content="See, cancel and add to your calendar the bookings you made at Northbank Sports Hub.">
+<meta name="theme-color" content="#0c2233">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/pricing.js" defer></script>
+<script src="assets/js/store.js" defer></script>
+<script src="assets/js/calendar.js" defer></script>
+<script src="assets/js/my-bookings.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="assets/img/logo.svg" width="40" height="40" alt=""><span>Northbank<br>Sports Hub</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-open">Menu</span><span class="nav-toggle-close">Close</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="booking.html">Book now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-head" aria-labelledby="page-title">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">My bookings</span></li></ol></nav>
+    <h1 id="page-title">My bookings</h1>
+    <p class="lead">Every booking you make is saved in this browser. Look one up, add it to your calendar, or cancel it.</p>
+  </div>
+</section>
+<section class="section" aria-label="Your bookings">
+  <div class="wrap">
+    <noscript>
+      <p class="callout">My bookings needs JavaScript, because your bookings are kept in your browser. Please call us on <a href="tel:+442079460123">020 7946 0123</a> to check or change a booking.</p>
+    </noscript>
+
+    <p class="callout" id="storage-warning" hidden>Your browser is blocking site storage, so bookings cannot be saved or listed here. Allow site data for this page and reload.</p>
+
+    <p class="callout" data-file-note hidden>You opened this page from a folder on your computer. Some browsers, Firefox in particular, keep the saved data of each local file apart, so a booking may not show up on the next page. If that happens, open the live website, or run <code>python3 -m http.server</code> in the project folder and visit <code>http://localhost:8000</code>.</p>
+
+    <p class="section-intro">These are the bookings made in this browser. Nothing is on a server, so a different browser or device shows a different list. See the <a href="terms.html#t4">cancellation rules</a> before you cancel.</p>
+
+    <div class="field bk-search">
+      <label for="bk-search">Search your bookings <span class="hint">By reference, name, email or what you booked</span></label>
+      <input type="search" id="bk-search" autocomplete="off" placeholder="For example NB-4K7Q2M or tennis">
+    </div>
+
+    <p class="form-ok" id="bk-message" role="status" tabindex="-1" hidden></p>
+
+    <div id="bk-empty" class="callout" hidden>
+      <h2>No bookings yet</h2>
+      <p>When you book a facility or event, it shows up here. You can see it, add it to your calendar, or cancel it.</p>
+      <p><a class="btn btn-primary" href="booking.html">Make a booking</a></p>
+    </div>
+    <p id="bk-nomatch" class="callout" hidden>No booking matches that search. Clear the box to see them all.</p>
+
+    <section id="bk-upcoming" aria-labelledby="bk-up-title" hidden>
+      <h2 id="bk-up-title">Upcoming</h2>
+      <div class="booking-list" id="bk-upcoming-list"></div>
+    </section>
+
+    <section id="bk-past" aria-labelledby="bk-past-title" hidden>
+      <h2 id="bk-past-title">Cancelled and past</h2>
+      <div class="booking-list" id="bk-past-list"></div>
+    </section>
+
+    <details class="demo-tools">
+      <summary>Demo tools</summary>
+      <p>Everything on this site is stored in your browser. If you want to start from a clean slate, for example before a presentation, reset it here. This removes your bookings, member numbers and messages, and restores the demo member <strong>NBM-0001</strong>.</p>
+      <button type="button" class="btn btn-small" id="reset-btn">Reset demo data</button>
+      <div class="cancel-panel" id="reset-panel" hidden>
+        <p>This clears every booking, message and member saved in this browser. It cannot be undone. Are you sure?</p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-small btn-danger" id="reset-yes">Yes, reset everything</button>
+          <button type="button" class="btn btn-small" id="reset-no">Keep my data</button>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer on-ink">
+  <div class="wrap footer-qa">
+    <p><strong>Marking or reviewing this project?</strong> The Project Q&amp;A explains how it was built and answers the questions a teacher is likely to ask.</p>
+    <a class="btn btn-primary" href="qa.html">Open the Project Q&amp;A</a>
+  </div>
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
+      <p>A community sports centre on the river: pitches, a sports hall, tennis courts, a 25 m pool and a running track.</p>
+    </div>
+    <nav aria-label="Site pages">
+      <h2 class="footer-h">Explore</h2>
+      <ul class="footer-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="booking.html">Book now</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms and conditions</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="footer-h">Visit us</h2>
+      <address>12 Riverside Walk<br>Northbank<br>NB1 4AB</address>
+      <p>Phone: <a href="tel:+442079460123">020 7946 0123</a><br>Email: <a href="mailto:hello@northbank-hub.example">hello@northbank-hub.example</a></p>
+    </div>
+    <div>
+      <h2 class="footer-h">Opening hours</h2>
+      <dl class="footer-hours">
+        <div><dt>Mon to Fri</dt><dd>07:00 to 22:00</dd></div>
+        <div><dt>Sat and Sun</dt><dd>08:00 to 20:00</dd></div>
+        <div><dt>25 and 26 Dec</dt><dd>Closed</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
+    <ul>
+      <li><a href="my-bookings.html">My bookings</a></li>
+      <li><a href="staff.html">Staff dashboard (demo)</a></li>
+      <li><a href="terms.html">Terms and conditions</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

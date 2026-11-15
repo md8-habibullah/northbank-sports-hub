@@ -13,6 +13,8 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/data.js" defer></script>
 <script src="assets/js/pricing.js" defer></script>
+<script src="assets/js/store.js" defer></script>
+<script src="assets/js/calendar.js" defer></script>
 <script src="assets/js/confirmation.js" defer></script>
 </head>
 <body>
@@ -49,8 +51,9 @@
     </noscript>
 
     <div id="no-booking" class="callout" hidden>
-      <h2>We could not find a booking</h2>
-      <p>This page shows the booking you made in this browser tab. If you closed the tab or opened this page directly, start again and your summary will appear here.</p>
+      <h2>We could not find that booking</h2>
+      <p>Bookings are saved in the browser you made them in. If you opened this page directly, used a different browser or device, or cleared your site data, the booking is not here. Check <a href="my-bookings.html">My bookings</a>, or start again.</p>
+      <p class="callout" data-file-note hidden>You opened this page from a folder on your computer. Some browsers, Firefox in particular, keep the saved data of each local file apart, so a booking may not show up on the next page. If that happens, open the live website, or run <code>python3 -m http.server</code> in the project folder and visit <code>http://localhost:8000</code>.</p>
       <p><a class="btn btn-primary" href="booking.html">Make a booking</a></p>
     </div>
 
@@ -58,7 +61,7 @@
       <div class="split">
         <div>
           <h2>Booking reference</h2>
-          <p><span class="reference" id="reference">NB-000000</span></p>
+          <p><span class="reference" id="reference">NB-000000</span> <span class="status status-confirmed" id="status-line">Confirmed</span></p>
           <dl class="summary-list" id="summary-details"></dl>
         </div>
         <div>
@@ -71,14 +74,16 @@
           <ol class="steps">
             <li>Bring your reference number to the front desk.</li>
             <li>Pay at the desk when you arrive, by card or cash.</li>
-            <li>Need to change something? Do it at least 48 hours before for hire bookings, or 7 days before for event tickets. See the <a href="terms.html#t4">terms</a>.</li>
+            <li>Need to change your plans? <a id="manage-link" href="my-bookings.html">Manage this booking</a>. See the <a href="terms.html#t4">terms</a> for the cancellation rules.</li>
           </ol>
+          <p class="callout" id="cancel-note"></p>
           <div class="callout">
-            <p><strong>This is a demonstration site.</strong> Nothing has been sent to us and nothing has been charged. The summary lives in this browser tab and disappears when you close it.</p>
+            <p><strong>This is a demonstration site.</strong> Nothing has been sent to us and nothing has been charged. Your booking is saved in this browser (local storage), so it is still here when you come back, but it is not on a server and no other device can see it.</p>
           </div>
           <div class="btn-row">
-            <button type="button" class="btn btn-primary" id="print-btn">Print this summary</button>
-            <a class="btn" href="index.html">Back to home</a>
+            <button type="button" class="btn btn-primary" id="cal-btn">Add to calendar</button>
+            <button type="button" class="btn" id="print-btn">Print this summary</button>
+            <a class="btn" href="my-bookings.html">My bookings</a>
             <a class="btn" href="booking.html">Make another booking</a>
           </div>
         </div>
@@ -89,6 +94,10 @@
 
 </main>
 <footer class="site-footer on-ink">
+  <div class="wrap footer-qa">
+    <p><strong>Marking or reviewing this project?</strong> The Project Q&amp;A explains how it was built and answers the questions a teacher is likely to ask.</p>
+    <a class="btn btn-primary" href="qa.html">Open the Project Q&amp;A</a>
+  </div>
   <div class="wrap footer-grid">
     <div class="footer-about">
       <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
@@ -125,6 +134,8 @@
   <div class="wrap footer-base">
     <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
     <ul>
+      <li><a href="my-bookings.html">My bookings</a></li>
+      <li><a href="staff.html">Staff dashboard (demo)</a></li>
       <li><a href="terms.html">Terms and conditions</a></li>
       <li><a href="privacy.html">Privacy</a></li>
     </ul>

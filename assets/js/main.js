@@ -1,4 +1,4 @@
-/* Northbank Sports Hub: navigation, event filter, contact form demo, footer year.
+/* Northbank Sports Hub: navigation, event filter and footer year.
    Every page works without this file; it only adds convenience. */
 (function () {
   'use strict';
@@ -31,6 +31,12 @@
   var years = document.querySelectorAll('[data-year]');
   for (var i = 0; i < years.length; i++) years[i].textContent = String(new Date().getFullYear());
 
+  /* ---- Opened from a folder (file://): saved bookings may not be shared between pages ---- */
+  if (window.location.protocol === 'file:') {
+    var fileNotes = document.querySelectorAll('[data-file-note]');
+    for (var f = 0; f < fileNotes.length; f++) fileNotes[f].hidden = false;
+  }
+
   /* ---- Events filter ---------------------------------------------------- */
   var filter = document.querySelector('[data-filter]');
   if (filter) {
@@ -59,24 +65,5 @@
         apply(this.getAttribute('data-sport'));
       });
     }
-  }
-
-  /* ---- Contact form (demo: nothing is sent) ----------------------------- */
-  var contact = document.querySelector('form[data-demo-form]');
-  if (contact) {
-    var done = document.getElementById('contact-success');
-    contact.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!contact.checkValidity()) {
-        contact.reportValidity();
-        return;
-      }
-      var name = (contact.elements.name && contact.elements.name.value || '').trim();
-      var who = done.querySelector('[data-name]');
-      if (who) who.textContent = name || 'there';
-      done.hidden = false;
-      contact.hidden = true;
-      done.focus();
-    });
   }
 }());

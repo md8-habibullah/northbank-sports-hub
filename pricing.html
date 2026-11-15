@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script>document.documentElement.classList.add("js");</script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/store.js" defer></script>
+<script src="assets/js/membership.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -92,7 +95,41 @@
           </tbody>
         </table>
       </div>
-      <p>Ask at the front desk to join. Terms for memberships are in <a href="terms.html#t8">section 8 of our terms</a>.</p>
+      <p>Terms for memberships are in <a href="terms.html#t8">section 8 of our terms</a>.</p>
+
+      <div class="js-only" id="join">
+        <h3>Join online</h3>
+        <p>Pick a plan and you get a member number straight away. Enter it on the <a href="booking.html">booking form</a> to take 15% off hire. This is a demonstration, so no payment is taken.</p>
+        <form id="join-form" method="get" action="pricing.html">
+          <fieldset>
+            <legend>Your membership</legend>
+            <div class="field">
+              <label for="plan">Plan</label>
+              <select id="plan" name="plan">
+                <option value="member">Member, £19 a month</option>
+<option value="family">Family, £34 a month</option>
+<option value="student">Student and over-60s, £12 a month</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="join-name">Full name</label>
+                <input type="text" id="join-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="join-email">Email</label>
+                <input type="email" id="join-email" name="email" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="choice">
+              <input type="checkbox" id="join-ok" name="ok" required>
+              <label for="join-ok">I understand this is a demonstration and no payment is taken.</label>
+            </div>
+            <button class="btn btn-primary" type="submit">Join now</button>
+          </fieldset>
+        </form>
+        <div id="join-success" class="form-ok" role="status" tabindex="-1" hidden></div>
+      </div>
     </section>
 
     <section class="price-block" id="events" aria-labelledby="ev-title">
@@ -142,6 +179,10 @@
 
 </main>
 <footer class="site-footer on-ink">
+  <div class="wrap footer-qa">
+    <p><strong>Marking or reviewing this project?</strong> The Project Q&amp;A explains how it was built and answers the questions a teacher is likely to ask.</p>
+    <a class="btn btn-primary" href="qa.html">Open the Project Q&amp;A</a>
+  </div>
   <div class="wrap footer-grid">
     <div class="footer-about">
       <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
@@ -178,6 +219,8 @@
   <div class="wrap footer-base">
     <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
     <ul>
+      <li><a href="my-bookings.html">My bookings</a></li>
+      <li><a href="staff.html">Staff dashboard (demo)</a></li>
       <li><a href="terms.html">Terms and conditions</a></li>
       <li><a href="privacy.html">Privacy</a></li>
     </ul>

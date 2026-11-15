@@ -86,17 +86,60 @@ window.NB_DATA = {
       "price": 0
     }
   },
+  "plans": {
+    "member": {
+      "label": "Member",
+      "price": 19
+    },
+    "family": {
+      "label": "Family",
+      "price": 34
+    },
+    "student": {
+      "label": "Student and over-60s",
+      "price": 12
+    }
+  },
+  "demoMember": {
+    "number": "NBM-0001",
+    "name": "Demo Member",
+    "plan": "member"
+  },
   "events": {
     "open-day": {
       "name": "Winter Open Day",
       "date": "2026-11-28",
       "free": true,
+      "endDate": "2026-11-28",
+      "startTime": "10:00",
+      "endTime": "16:00",
+      "where": "Whole Hub",
+      "capacity": {
+        "spectators": 400,
+        "entries": null
+      },
+      "base": {
+        "spectators": 212,
+        "entries": null
+      },
       "entry": null
     },
     "winter-cup": {
       "name": "Winter Five-a-side Cup",
       "date": "2026-12-05",
       "free": false,
+      "endDate": "2026-12-05",
+      "startTime": "10:00",
+      "endTime": "17:00",
+      "where": "3G pitches 1 and 2",
+      "capacity": {
+        "spectators": 250,
+        "entries": 16
+      },
+      "base": {
+        "spectators": 138,
+        "entries": 14
+      },
       "entry": {
         "label": "Team entry",
         "unit": "team",
@@ -108,6 +151,18 @@ window.NB_DATA = {
       "name": "Open Badminton Doubles",
       "date": "2026-12-13",
       "free": false,
+      "endDate": "2026-12-13",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "where": "Sports hall, courts 1 to 6",
+      "capacity": {
+        "spectators": 120,
+        "entries": 40
+      },
+      "base": {
+        "spectators": 40,
+        "entries": 24
+      },
       "entry": {
         "label": "Pair entry",
         "unit": "pair",
@@ -119,6 +174,18 @@ window.NB_DATA = {
       "name": "Swim-a-thon",
       "date": "2026-12-19",
       "free": true,
+      "endDate": "2026-12-19",
+      "startTime": "08:00",
+      "endTime": "14:00",
+      "where": "25 m pool",
+      "capacity": {
+        "spectators": 150,
+        "entries": 60
+      },
+      "base": {
+        "spectators": 35,
+        "entries": 31
+      },
       "entry": {
         "label": "Swimmer entry",
         "unit": "swimmer",
@@ -130,6 +197,18 @@ window.NB_DATA = {
       "name": "New Year 5K Fun Run",
       "date": "2027-01-01",
       "free": true,
+      "endDate": "2027-01-01",
+      "startTime": "10:00",
+      "endTime": "12:30",
+      "where": "Track and riverside loop",
+      "capacity": {
+        "spectators": 300,
+        "entries": 150
+      },
+      "base": {
+        "spectators": 20,
+        "entries": 87
+      },
       "entry": {
         "label": "Runner entry",
         "unit": "runner",
@@ -141,6 +220,18 @@ window.NB_DATA = {
       "name": "Junior Basketball Slam",
       "date": "2027-01-09",
       "free": false,
+      "endDate": "2027-01-09",
+      "startTime": "10:30",
+      "endTime": "16:00",
+      "where": "Sports hall",
+      "capacity": {
+        "spectators": 200,
+        "entries": 12
+      },
+      "base": {
+        "spectators": 63,
+        "entries": 11
+      },
       "entry": {
         "label": "Team entry",
         "unit": "team",
@@ -152,6 +243,18 @@ window.NB_DATA = {
       "name": "Club Tennis Championships",
       "date": "2027-01-23",
       "free": false,
+      "endDate": "2027-01-24",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "where": "Floodlit courts 1 to 4",
+      "capacity": {
+        "spectators": 180,
+        "entries": 32
+      },
+      "base": {
+        "spectators": 52,
+        "entries": 32
+      },
       "entry": {
         "label": "Player entry",
         "unit": "player",
@@ -163,6 +266,18 @@ window.NB_DATA = {
       "name": "Schools Futsal Finals",
       "date": "2027-02-06",
       "free": false,
+      "endDate": "2027-02-06",
+      "startTime": "13:00",
+      "endTime": "18:00",
+      "where": "Sports hall",
+      "capacity": {
+        "spectators": 300,
+        "entries": null
+      },
+      "base": {
+        "spectators": 118,
+        "entries": null
+      },
       "entry": null
     }
   }

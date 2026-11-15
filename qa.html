@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Q&amp;A | Northbank Sports Hub</title>
+<meta name="description" content="Questions and answers about how the Northbank Sports Hub website was designed, built, tested and published.">
+<meta name="theme-color" content="#0c2233">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/qa.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="assets/img/logo.svg" width="40" height="40" alt=""><span>Northbank<br>Sports Hub</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-open">Menu</span><span class="nav-toggle-close">Close</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="booking.html">Book now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-head" aria-labelledby="page-title">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">Project Q&amp;A</span></li></ol></nav>
+    <h1 id="page-title">Project Q&amp;A</h1>
+    <p class="lead">Everything about how this website was built, in question and answer form. Use the search box, or open a topic.</p>
+  </div>
+</section>
+<section class="section" aria-label="Project questions and answers">
+  <div class="wrap">
+    <div class="split qa-top">
+      <div>
+        <h2 id="about-qa">About this page</h2>
+        <p>Northbank Sports Hub is a fictional sports centre website made for a web design assignment. This page explains the whole project in question and answer form: what it is, how it was designed and built, how the booking system works, how it was tested and what its limits are. It is written so that anyone can understand it, and so that a marker can ask about any part and find the answer.</p>
+        <p>The questions are grouped by topic. Use the search box to find one, or open a topic from the list. Every question has its own web address, so a link such as <code>qa.html#price-calc</code> opens straight to it.</p>
+        <p>Source code: <a href="https://github.com/md8-habibullah/northbank-sports-hub">GitHub repository</a>. Live website: <a href="https://md8-habibullah.github.io/northbank-sports-hub/">GitHub Pages</a>.</p>
+      </div>
+      <div class="callout">
+        <h2 id="tour-title">Try it in two minutes</h2>
+        <ol class="steps">
+          <li><a href="booking.html">Book a pitch</a>: pick a date and a time, watch the price and the free places change, then press Confirm booking.</li>
+          <li>Open <a href="my-bookings.html">My bookings</a>. Your booking is there. Try Cancel booking: the page says whether it is free or a late fee.</li>
+          <li>Book again with the member number <strong>NBM-0001</strong>. 15% comes off the hire price.</li>
+          <li>On the <a href="events.html">Events page</a>, see the places left. The tennis championships entries are full.</li>
+          <li><a href="contact.html">Send a message</a>, then open the <a href="staff.html">Staff dashboard</a> to see your booking, the message and the member.</li>
+          <li>Use Reset demo data (under Demo tools) to start again.</li>
+        </ol>
+      </div>
+    </div>
+
+    <section aria-labelledby="mark-title">
+      <h2 id="mark-title">Where to find each marking point</h2>
+      <div class="table-wrap">
+        <table class="prices stack">
+          <caption>The marking sheet and where to see the evidence</caption>
+          <thead>
+            <tr><th scope="col">Marking point</th><th scope="col">Where to look</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row" data-label="Marking point">Pages for the information needs (sports events, booking prices, about us, terms and conditions)</th><td data-label="Where to look"><a href="events.html">Events</a>, <a href="pricing.html">Prices</a>, <a href="about.html">About us</a> and <a href="terms.html">Terms and conditions</a>, plus Facilities, Contact, Booking and Privacy. See <a href="#pages">Which pages are there</a>.</td></tr>
+            <tr><th scope="row" data-label="Marking point">Creative HTML tags, all pages linked, logical flow, no errors</th><td data-label="Where to look"><a href="#tags">The tags that are used</a>, <a href="#headings">headings and landmarks</a>, <a href="#how-tested">the page checker</a>. Every page is reachable from the menu, the footer or the booking flow.</td></tr>
+            <tr><th scope="row" data-label="Marking point">Look and feel, easy navigation</th><td data-label="Where to look"><a href="#design-idea">The design idea</a>, <a href="#navigation">how navigation works</a>.</td></tr>
+            <tr><th scope="row" data-label="Marking point">Responsive on at least three screen sizes, including images and content</th><td data-label="Where to look"><a href="#responsive">How it is responsive</a>, <a href="#three-sizes">the three sizes</a>, <a href="#tables-mobile">tables on a phone</a>, <a href="#images-responsive">images</a>. Resize the window to see it.</td></tr>
+            <tr><th scope="row" data-label="Marking point">Beyond the sheet: a working booking system</th><td data-label="Where to look"><a href="#booking-steps">How a booking works</a>, <a href="#is-backend">the browser back end</a>, <a href="#not-real">what is and is not real</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="find-title">
+      <h2 id="find-title">Find a question</h2>
+      <nav aria-label="Topics on this page">
+        <ul class="jump-nav">
+        <li><a href="#glance">The project at a glance</a></li>
+        <li><a href="#design">Design and look and feel</a></li>
+        <li><a href="#html">HTML: structure and tags</a></li>
+        <li><a href="#css">CSS and responsive design</a></li>
+        <li><a href="#booking">The booking system: what works and how</a></li>
+        <li><a href="#js">JavaScript and code</a></li>
+        <li><a href="#quality">Accessibility, privacy and security</a></li>
+        <li><a href="#testing">Testing and quality checks</a></li>
+        <li><a href="#hosting">Hosting, Git and licence</a></li>
+        <li><a href="#limits">Limits and what comes next</a></li>
+        <li><a href="#basics">Quick answers to common exam questions</a></li>
+        </ul>
+      </nav>
+      <div class="qa-tools js-only">
+        <div class="qa-bar">
+          <div class="field qa-search">
+            <label for="qa-search">Search the questions</label>
+            <input type="search" id="qa-search" autocomplete="off" placeholder="For example cancel, localStorage or responsive">
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-small" id="qa-open">Expand all</button>
+            <button type="button" class="btn btn-small" id="qa-close">Collapse all</button>
+          </div>
+        </div>
+        <p class="qa-count" id="qa-count" aria-live="polite">89 questions in 11 topics.</p>
+      </div>
+      <p class="callout" id="qa-none" role="status" hidden>No question matches those words. Try a shorter word, or clear the box.</p>
+    </section>
+
+    <section class="qa-group" id="glance" aria-labelledby="glance-title">
+      <h2 id="glance-title">The project at a glance</h2>
+      <p class="qa-group-intro">What it is, who it is for and what it is made of.</p>
+      <details class="qa-item" id="what-is-it">
+        <summary>What is this project in one minute?</summary>
+        <div class="qa-answer">
+<p>Northbank Sports Hub is a complete, working website for a made-up community sports centre. A visitor can read about sports events, check prices, look at the facilities, book a pitch, court, lane or room, buy event tickets, join as a member, cancel a booking and send a message. A second, hidden-from-the-menu page shows the same activity from the staff side.</p>
+<p>It is written in plain HTML, CSS and JavaScript. There is no framework, no build step and no server. Everything a visitor enters is saved in their own browser.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="why-fictional">
+        <summary>Why is the centre fictional?</summary>
+        <div class="qa-answer">
+<p>The task was a web design assignment, so the centre, people, prices, events, phone number and email address are all invented. The email domain ends in <code>.example</code> and the phone number is from the range reserved for drama, so nothing can reach a real person. The terms and privacy pages are sample text, not legal advice.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="audience">
+        <summary>Who is the website for?</summary>
+        <div class="qa-answer">
+<p>Three kinds of visitor: local people who want to book a pitch or court after work, families and schools looking for events and a pool, and club organisers who need to hire a space or enter a team. That is why the home page shows the next events and the booking button first, and why the prices are one click away.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="pages">
+        <summary>Which pages are there and what does each one do?</summary>
+        <div class="qa-answer">
+<div class="table-wrap"><table class="prices stack">
+<caption>All pages of the website</caption>
+<thead><tr><th scope="col">Page</th><th scope="col">What it does</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Page"><a href="index.html">Home</a></th><td data-label="What it does">Hero, next events, facilities, prices, how booking works, how to find us.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="events.html">Events</a></th><td data-label="What it does">Eight events with a sport filter, a live count of places left and a Book button.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="facilities.html">Facilities</a></th><td data-label="What it does">The pitches, sports hall, tennis courts, pool, track and function room.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="pricing.html">Prices</a></th><td data-label="What it does">Hire prices (peak and off-peak), memberships with an online join form, tickets and entry fees.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="booking.html">Book</a></th><td data-label="What it does">The booking form: live price, live availability, member number check.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="confirmation.html">Summary</a></th><td data-label="What it does">The saved booking with its reference, calendar download and print.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="my-bookings.html">My bookings</a></th><td data-label="What it does">Lists, searches and cancels the bookings saved in this browser.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="staff.html">Staff dashboard</a></th><td data-label="What it does">The back-office view: all bookings, event capacity, messages and members.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="about.html">About us</a></th><td data-label="What it does">Story, timeline, values, numbers and team.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="contact.html">Contact</a></th><td data-label="What it does">Address, opening hours, map, a message form and common questions.</td></tr>
+<tr><th scope="row" data-label="Page"><a href="terms.html">Terms</a> and <a href="privacy.html">Privacy</a></th><td data-label="What it does">Sample legal pages that the booking rules point to.</td></tr>
+<tr><th scope="row" data-label="Page">Project Q&amp;A</th><td data-label="What it does">This page.</td></tr>
+</tbody></table></div>
+<p>There is also a 404 page for addresses that do not exist.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="tech">
+        <summary>Which technologies are used, and why those?</summary>
+        <div class="qa-answer">
+<ul>
+<li><strong>HTML</strong> for structure and meaning.</li>
+<li><strong>CSS</strong> for layout, colour and responsiveness. One file, <code>assets/css/style.css</code>.</li>
+<li><strong>JavaScript</strong> (plain, no libraries) for the booking logic, availability, the saved data and small helpers.</li>
+<li><strong>SVG</strong> for every picture, so there are no photos to license and the images stay sharp at any size.</li>
+<li><strong>localStorage</strong> as the stand-in for a back end.</li>
+<li><strong>GitHub Pages</strong> to host it for free.</li>
+</ul>
+<p>Nothing needs installing: a browser is enough, which also makes it easy to explain and to mark.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="ai-used">
+        <summary>Was an AI tool used to build it?</summary>
+        <div class="qa-answer">
+<p>Yes. The assignment allowed asking an AI, and this site was built with an AI coding assistant (Claude Code) working from the marking sheet. The person submitting it is expected to understand it and be able to explain it, and this Q&amp;A page exists to make that easy. Every behaviour described here can be checked on the live site or in the files.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="no-framework">
+        <summary>Why no framework such as React, and no library such as jQuery?</summary>
+        <div class="qa-answer">
+<p>The site is small enough that a framework would add more to learn and explain than it saves. Plain files load fast, work offline from a folder, need no build step and are easy to host. It also keeps the whole thing readable: each script is short and does one job.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="design" aria-labelledby="design-title">
+      <h2 id="design-title">Design and look and feel</h2>
+      <p class="qa-group-intro">Why the site looks the way it does.</p>
+      <details class="qa-item" id="design-idea">
+        <summary>What is the design idea?</summary>
+        <div class="qa-answer">
+<p>The idea is a multi-sport hall floor. In a real sports hall, the lines for basketball, badminton and volleyball are painted over each other in different colours. The site does the same: each sport has its own line colour (green for football, blue for badminton, teal for swimming, red for basketball, a tennis-ball yellow-green for tennis, orange for running), and that colour is used for event tags, event rows, price dots and tiles. The hero picture is the hall floor itself.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="colours">
+        <summary>How were the colours chosen and are they readable?</summary>
+        <div class="qa-answer">
+<p>A deep navy ink colour carries the text on a pale grey-blue page, with the sport colours used as accents. They are stored once as CSS custom properties at the top of the stylesheet, so a change there changes the whole site. The text and button colour pairs were checked with a small contrast script against the WCAG AA level (at least 4.5 to 1 for normal text). Meaning is never carried by colour alone: statuses always have a word as well, such as Confirmed or Cancelled.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="fonts">
+        <summary>Which fonts are used?</summary>
+        <div class="qa-answer">
+<p>No font files are downloaded. Headings use a condensed system font stack (Bahnschrift, then similar fonts, then Arial) and the body uses the system's own UI font. That keeps pages fast and avoids sending visitors' data to a font service. The trade-off is that the exact letter shapes differ a little between Windows, macOS and Linux.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="navigation">
+        <summary>How is navigation kept easy?</summary>
+        <div class="qa-answer">
+<ul>
+<li>The same header on every page, with the current page marked (<code>aria-current</code>) and a Book now button in it.</li>
+<li>Breadcrumbs under the page title, so you always know where you are.</li>
+<li>A footer on every page with the main pages, the opening hours, My bookings and a button to this Q&amp;A.</li>
+<li>A logical flow: Home, Events or Facilities, Prices, Book, Summary, My bookings.</li>
+<li>On phones the menu folds into a Menu button that also closes with the Escape key.</li>
+<li>A custom 404 page that links back into the site.</li>
+</ul>
+        </div>
+      </details>
+      <details class="qa-item" id="pictures">
+        <summary>Where do the pictures come from?</summary>
+        <div class="qa-answer">
+<p>They were drawn for this site as SVG files: a top-down court or pool for each facility, the hero hall floor, a logo, a favicon and a map. Because they are drawings, there are no copyright problems, they are tiny (the whole <code>assets/img</code> folder is under 60 KB), and they scale to any screen without going blurry. Each has a descriptive <code>alt</code> text.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="dark-mode">
+        <summary>Is there a dark mode?</summary>
+        <div class="qa-answer">
+<p>No. The site declares a light colour scheme and was designed and checked for contrast in that one scheme. A dark theme would be a good next step: because the colours are CSS custom properties, it would mostly mean redefining the values inside a <code>prefers-color-scheme: dark</code> block and re-checking contrast.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="html" aria-labelledby="html-title">
+      <h2 id="html-title">HTML: structure and tags</h2>
+      <p class="qa-group-intro">The marking sheet asks for creative, correct HTML.</p>
+      <details class="qa-item" id="tags">
+        <summary>Which HTML tags are used beyond div and span?</summary>
+        <div class="qa-answer">
+<p>Structure: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>aside</code>, <code>footer</code>. Content: <code>figure</code> with <code>figcaption</code>, <code>picture</code> with <code>source</code>, <code>address</code>, <code>blockquote</code>, <code>time</code>, <code>mark</code>, <code>details</code> with <code>summary</code>, <code>dl</code> with <code>dt</code> and <code>dd</code>. Tables: <code>caption</code>, <code>thead</code>, <code>tbody</code>, <code>th scope</code>. Forms: <code>fieldset</code>, <code>legend</code>, <code>label</code>, <code>output</code>, <code>select</code>, <code>textarea</code> and input types for email, tel, date, number, search and checkbox. Plus <code>noscript</code> for visitors without JavaScript.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="semantic">
+        <summary>What is semantic HTML and why does it matter?</summary>
+        <div class="qa-answer">
+<p>Semantic HTML means choosing the tag that describes what the content is, not just how it should look. A <code>nav</code> is navigation, a <code>time</code> is a date a computer can read, an <code>address</code> is contact information. It matters because screen readers and search engines use those meanings, because keyboard users can jump between landmarks, and because the page still makes sense with the CSS switched off.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="time-tag">
+        <summary>Why use the time tag with a datetime attribute?</summary>
+        <div class="qa-answer">
+<p>People read "Sat 5 Dec 2026", but a computer needs a fixed format. <code>&lt;time datetime="2026-12-05"&gt;</code> gives both: the visible text for people and the standard date for browsers, search engines and assistive technology.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="output-tag">
+        <summary>Why is the price shown in an output tag?</summary>
+        <div class="qa-answer">
+<p><code>output</code> is the element made for the result of a calculation. The booking form recalculates the price every time you change a choice, and <code>output</code> tells assistive technology that this value is a computed result.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="picture-tag">
+        <summary>What does the picture tag do?</summary>
+        <div class="qa-answer">
+<p>It lets the browser choose between images. On the home page, phones get <code>hero-hall-close.svg</code>, a tighter crop of the hall floor that stays readable on a narrow screen, while larger screens get the full picture. This is called art direction: a different crop, not just a smaller copy of the same image.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="details-tag">
+        <summary>How do the question-and-answer boxes open without JavaScript?</summary>
+        <div class="qa-answer">
+<p>They are <code>details</code> and <code>summary</code> elements. The browser itself opens and closes them, and they work with the keyboard and with screen readers. This page's JavaScript only adds the search box and the Expand all and Collapse all buttons on top.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="headings">
+        <summary>How are headings and landmarks organised?</summary>
+        <div class="qa-answer">
+<p>Each page has exactly one <code>h1</code> and the levels never skip (h1, then h2, then h3). Landmarks (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>) have labels where there is more than one navigation. A "Skip to main content" link is the first thing a keyboard user reaches. The checker script in <code>tools/</code> tests the single <code>h1</code> and the heading order on every page.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="forms-html">
+        <summary>How are the forms built?</summary>
+        <div class="qa-answer">
+<ul>
+<li>Every field has a visible <code>label</code> tied to it with <code>for</code> and <code>id</code>.</li>
+<li>Related fields are grouped in a <code>fieldset</code> with a <code>legend</code>.</li>
+<li>The browser checks the basics for free: <code>required</code>, <code>type="email"</code>, number ranges and the date minimum and maximum.</li>
+<li><code>autocomplete</code> values let browsers fill in name, email and phone.</li>
+<li>Where the standard checks are not enough (is this time free? does this member number exist?), JavaScript sets a custom message with <code>setCustomValidity</code>, so the browser shows it in the same way as its own messages.</li>
+</ul>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="css" aria-labelledby="css-title">
+      <h2 id="css-title">CSS and responsive design</h2>
+      <p class="qa-group-intro">Two marks on the sheet are for responsiveness.</p>
+      <details class="qa-item" id="responsive">
+        <summary>How is the site responsive?</summary>
+        <div class="qa-answer">
+<p>It is built mobile first: the base CSS is the phone layout, and two <code>min-width</code> media queries add the tablet layout (from 40em, about 640 px) and the desktop layout (from 62em, about 992 px). On top of that, fluid sizing with <code>clamp()</code> lets headings and spacing grow smoothly, and CSS Grid and Flexbox let rows wrap or stack when there is no room. Images have a width and height and <code>max-width: 100%</code>, so nothing overflows the screen.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="three-sizes">
+        <summary>Which three screen sizes were tested?</summary>
+        <div class="qa-answer">
+<ul>
+<li><strong>Phone:</strong> 375 px wide.</li>
+<li><strong>Tablet:</strong> 768 px wide.</li>
+<li><strong>Desktop:</strong> 1280 px wide.</li>
+</ul>
+<p>Screenshots of the home page at all three sizes are in the README (<code>docs/screenshots</code>). To see it yourself, open the site and drag the window narrower, or press F12 and use the device toolbar. Nothing should scroll sideways at any width.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="tables-mobile">
+        <summary>How do the wide price tables work on a phone?</summary>
+        <div class="qa-answer">
+<p>A table with five columns cannot fit in 375 px. On phones, the CSS turns each row into a small card, and every cell shows its column name beside the value using the <code>data-label</code> attribute (<code>td::before</code> reads it). On tablets and desktops the same HTML shows as a normal table, so there is only one version of the content to maintain.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="images-responsive">
+        <summary>How do images behave on different screens?</summary>
+        <div class="qa-answer">
+<p>They are SVG, so they scale without losing sharpness. Each has <code>width</code> and <code>height</code> attributes, so the browser reserves the right space before the image loads and the page does not jump. Pictures below the first screen use <code>loading="lazy"</code>, and the hero uses <code>fetchpriority="high"</code> because it is the first thing seen.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="custom-props">
+        <summary>What are CSS custom properties and where are they used?</summary>
+        <div class="qa-answer">
+<p>They are variables in CSS, such as <code>--ink</code> or <code>--blue</code>, defined once in <code>:root</code> and used with <code>var(--ink)</code>. The sport colours use them in a clever way: each element gets <code>data-sport="tennis"</code> and CSS sets <code>--sport</code> from that, so a tag, a border and a dot all pick up the right colour from one attribute.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="grid-flex">
+        <summary>Where are Grid and Flexbox used?</summary>
+        <div class="qa-answer">
+<p>Grid is used for two-dimensional layouts: the footer columns, the event rows, the facility sections and the booking page with its price panel beside the form. Flexbox is used for one-dimensional rows: the header bar, button rows and the filter chips. The price panel on the booking page is <code>position: sticky</code> on desktop, so the total stays in view while you fill in the form.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="hero-animation">
+        <summary>How is the hero picture animated, and what about people who dislike motion?</summary>
+        <div class="qa-answer">
+<p>The court lines in <code>hero-hall.svg</code> are drawn in as if painted, using CSS inside the SVG (<code>stroke-dashoffset</code> from 1 to 0 over about one and a half seconds). It plays once. Inside the same file, a <code>prefers-reduced-motion: reduce</code> rule turns it off for visitors who asked their system for less motion, and smooth scrolling is only enabled when that preference is not set.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="print">
+        <summary>Is there a print style?</summary>
+        <div class="qa-answer">
+<p>Yes. A <code>@media print</code> block hides the header, the footer and the rows of buttons, switches to a white page and tightens the spacing, so the booking summary prints as a clean confirmation. The Print this summary button on the summary page calls <code>window.print()</code>.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="no-hscroll">
+        <summary>How do you stop the page scrolling sideways?</summary>
+        <div class="qa-answer">
+<p>By not letting anything be wider than the screen: no fixed pixel widths on containers, images limited with <code>max-width: 100%</code>, flex and grid rows that wrap, and the few things that are naturally wide (tables) inside their own scrolling container. Every page was checked at 375 px for horizontal scroll.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="booking" aria-labelledby="booking-title">
+      <h2 id="booking-title">The booking system: what works and how</h2>
+      <p class="qa-group-intro">The part that makes it more than a brochure.</p>
+      <details class="qa-item" id="booking-steps">
+        <summary>How does a booking work, step by step?</summary>
+        <div class="qa-answer">
+<ol>
+<li>You choose Hire a facility or Event tickets on the booking page.</li>
+<li>For a hire, you pick the facility, date, start time, length and how many pitches, courts or lanes. The page checks opening hours, closed days and what is free, and shows a live price.</li>
+<li>You add your details and press Confirm booking.</li>
+<li>The page checks everything one more time, makes a reference such as <code>NB-4K7Q2M</code>, saves the booking in the browser and opens the summary page for that reference.</li>
+<li>The booking now counts against availability, appears on My bookings and on the staff dashboard, and can be added to a calendar or cancelled.</li>
+</ol>
+        </div>
+      </details>
+      <details class="qa-item" id="is-backend">
+        <summary>Does it have a back end?</summary>
+        <div class="qa-answer">
+<p>Not a server. A real back end is a program on a server with a database, and nothing like that is available on free static hosting. Instead, the site has a small <strong>browser back end</strong>: <code>store.js</code> is a data layer that saves JSON in <code>localStorage</code>, and the other scripts talk to it through functions such as <code>Store.bookings.add()</code> and <code>Store.members.find()</code>. It does what a back end does (saves, finds, updates and deletes records, and enforces rules like capacity), it just keeps the data on the visitor's own device.</p>
+<p>That has one important consequence: data is per browser. A booking made on a phone is not visible on a laptop, and the staff dashboard only shows what was created in that same browser.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="localstorage">
+        <summary>What is localStorage, and how is it different from sessionStorage and cookies?</summary>
+        <div class="qa-answer">
+<div class="table-wrap"><table class="prices stack">
+<caption>Three ways a browser can keep data</caption>
+<thead><tr><th scope="col">Kind</th><th scope="col">How long it lasts</th><th scope="col">Sent to a server?</th><th scope="col">Size</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="Kind">localStorage</th><td data-label="How long it lasts">Until cleared by the user or the site</td><td data-label="Sent to a server?">No, only read by JavaScript</td><td data-label="Size">About 5 MB</td></tr>
+<tr><th scope="row" data-label="Kind">sessionStorage</th><td data-label="How long it lasts">Until the tab closes</td><td data-label="Sent to a server?">No</td><td data-label="Size">About 5 MB</td></tr>
+<tr><th scope="row" data-label="Kind">Cookies</th><td data-label="How long it lasts">Until their expiry date</td><td data-label="Sent to a server?">Yes, with every request</td><td data-label="Size">About 4 KB each</td></tr>
+</tbody></table></div>
+<p>Bookings must survive closing the tab, so localStorage was the right choice. The first version of this site used sessionStorage, which is why the summary used to disappear; it was changed for exactly that reason.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="what-saved">
+        <summary>What exactly is saved, and under which names?</summary>
+        <div class="qa-answer">
+<p>Four items, all with the prefix <code>nb:</code> so they never clash with another site's data: <code>nb:bookings</code> (a list of booking records), <code>nb:members</code> (member numbers), <code>nb:messages</code> (contact messages) and <code>nb:seeded</code> (a flag so the demo member is only created once). Each is a JSON string. You can see them in your browser's developer tools under Application, then Local Storage.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="json">
+        <summary>What is JSON?</summary>
+        <div class="qa-answer">
+<p>JSON is a text format for data made of objects, lists, text, numbers and true or false, for example <code>{"ref":"NB-4K7Q2M","total":90}</code>. localStorage can only keep text, so the scripts turn data into JSON text with <code>JSON.stringify</code> when saving and back into objects with <code>JSON.parse</code> when reading. It is also the format almost every real web API uses.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="storage-blocked">
+        <summary>What if the browser blocks storage?</summary>
+        <div class="qa-answer">
+<p>Some private windows or strict settings block localStorage. The store tests for this when the page loads. If it is blocked, the site keeps data in memory for as long as the page stays open, shows a warning on the pages that need storage, and the booking form refuses to pretend a booking was saved: it tells the visitor to allow site data or to phone instead.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="price-calc">
+        <summary>How is the price worked out?</summary>
+        <div class="qa-answer">
+<p>The hire price is counted hour by hour. Each hour is peak or off-peak: weekday hours from 17:00 and every weekend hour are peak, earlier weekday hours are off-peak. The two totals are multiplied by the number of pitches, courts or lanes. A member number takes 15% off that hire subtotal. The equipment pack (£6) is added last, so it is never discounted.</p>
+<p><strong>Worked example:</strong> a 5-a-side pitch on a Wednesday from 16:00 to 18:00 is one off-peak hour (£38) plus one peak hour (£52) = £90. With a valid member number, 15% (£13.50) comes off, so £76.50. This is the same example printed on the Prices page, and the same function produces both numbers.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="same-prices">
+        <summary>How do you make sure the Prices page and the booking form never disagree?</summary>
+        <div class="qa-answer">
+<p>Two things work together. First, every script reads its prices from one file, <code>assets/js/data.js</code>, so the booking form, the summary page and the staff dashboard cannot disagree with each other. Second, the Prices page is plain HTML that people read, so its numbers are typed into the tables. The test file <code>tools/test_logic.js</code> reads both and fails if any hire price, ticket price, entry fee or membership fee on the Prices page differs from <code>data.js</code>. It runs on GitHub on every push, so a mismatch is caught before the site goes live.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="availability">
+        <summary>How does availability work?</summary>
+        <div class="qa-answer">
+<p>Two things use up space:</p>
+<ol>
+<li><strong>Real bookings</strong> made in this browser. They are read from the store, so a booking really does take a pitch away from the next person.</li>
+<li><strong>Simulated other customers.</strong> A real centre would already have bookings from strangers. The site fakes that with a fixed formula based on the date, hour and facility, so the same slot always gives the same answer. Weekday evenings (17:00 to 21:00) and weekend middays (10:00 to 16:00) are the busy times.</li>
+</ol>
+<p>For a multi-hour booking, the number free is the smallest number free in any of its hours. The start-time drop-down shows each time as free, only some free, full, closed or passed, and full times cannot be chosen.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="simulated-honest">
+        <summary>Is the availability real? Isn't that cheating?</summary>
+        <div class="qa-answer">
+<p>Part of it is simulated, and the site says so openly (see the limits question below). Without a server there is no way to know what strangers booked, so the simulation makes the demo behave like a busy centre instead of an empty one. The logic that uses it is real: the same code would work unchanged if the "other customers" came from a database. What is not simulated is every booking you make yourself.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="hall-rule">
+        <summary>What is the shared sports hall rule?</summary>
+        <div class="qa-answer">
+<p>Basketball and badminton use the same hall floor, so they cannot happen at once. The basketball court is only free when no basketball and no badminton court is booked in that hour, and badminton courts are only free when basketball is not booked. Book the basketball court at 18:00 and every badminton court at 18:00 shows as full, and the page explains why.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="double-booking">
+        <summary>Can two people book the same slot?</summary>
+        <div class="qa-answer">
+<p>In one browser, no: the second booking sees the first and is refused once the places run out. Across two different devices, yes, because they have separate stores and no server to compare them. That is the main reason a real site needs a real back end, which checks and saves bookings in one place in a single step.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="events-capacity">
+        <summary>How do event places and entries work?</summary>
+        <div class="qa-answer">
+<p>Every event has a spectator capacity and, where people can enter and play, an entry capacity. Some places are already sold, so the numbers feel real: for example the Winter Five-a-side Cup has 16 team places and 14 are taken, so 2 are left. The Club Tennis Championships entries are full, so only spectator tickets can be bought. Your own bookings add to the sold numbers. Events whose last day has passed are marked finished and cannot be booked. The Events page and the booking form show the same "places left" because both ask the same function, <code>NBAvail.eventStatus()</code>.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="tickets">
+        <summary>How are tickets counted?</summary>
+        <div class="qa-answer">
+<p>Adult, concession and under-12 tickets count as one person each; a family ticket counts as four (up to 2 adults and 2 children). Under-12 tickets are free but still need a ticket, so they use up a place. Events marked free have all spectator tickets at £0, but an entry fee still applies if you enter to play.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="members">
+        <summary>How do member numbers and the discount work?</summary>
+        <div class="qa-answer">
+<p>On the Prices page, the Join online form creates a member and shows a number such as <code>NBM-1001</code> (numbers start after 1000 and go up by one). The booking form has a Member number box. As you type, it looks the number up in the saved members and tells you straight away: either "Member found: name. 15% off hire is applied." or that the number does not exist, in which case the form will not submit. A built-in demo member, <strong>NBM-0001</strong>, lets a marker try it without joining.</p>
+<p>The discount is real arithmetic in the price calculation, and the member number is saved with the booking so the summary and the staff dashboard can show it. No payment is taken; joining is a demonstration.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="cancel-rules">
+        <summary>How does cancelling work?</summary>
+        <div class="qa-answer">
+<p>It follows the Terms and conditions. A <strong>hire</strong> booking can be cancelled for free if at least 48 hours remain before it starts. An <strong>event</strong> booking needs 7 days. If you cancel later, the site still lets you cancel (so the place is freed for someone else) but records that the full price is still due as a late fee, and says so before you confirm. After a booking has started it cannot be cancelled. Cancelling asks for confirmation first, and a cancelled booking immediately stops counting against availability.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="reference">
+        <summary>How is the booking reference made?</summary>
+        <div class="qa-answer">
+<p>It is <code>NB-</code> followed by six characters picked at random with <code>crypto.getRandomValues</code>. The letters and digits that are easy to mix up (0, O, 1, I, L) are left out so it is easy to read out over the phone. The store checks that the reference is not already used before keeping it.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="url-ref">
+        <summary>How does the summary page know which booking to show?</summary>
+        <div class="qa-answer">
+<p>The address carries the reference: <code>confirmation.html?ref=NB-4K7Q2M</code>. The page reads <code>ref</code> from the address with <code>URLSearchParams</code> and looks it up in the store. That is why the page still works after a reload, from a bookmark, or from the link on My bookings. If the reference is not in this browser's store, it says so and links back.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="calendar">
+        <summary>What does Add to calendar do?</summary>
+        <div class="qa-answer">
+<p>It builds an <code>.ics</code> file, the standard calendar format, entirely in the browser: the booking is turned into text lines such as <code>BEGIN:VEVENT</code>, <code>DTSTART</code> and <code>SUMMARY</code>, wrapped in a Blob and downloaded. Google Calendar, Apple Calendar and Outlook can import it. A two-day event, such as the tennis championships, gets one calendar entry per day. Times are local clock times, so they show correctly wherever the visitor is.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="staff-dash">
+        <summary>What does the staff dashboard do?</summary>
+        <div class="qa-answer">
+<p>It is the other side of the system. It reads the same store as the booking form and shows totals, a searchable and filterable bookings table, event capacity, messages from the contact form and the member list. Staff can check a booking in, cancel it (which frees the space), mark messages as read or delete them, and export the bookings as a CSV file for a spreadsheet. Anything you do on the public pages appears there at once.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="staff-security">
+        <summary>Is the staff dashboard secure?</summary>
+        <div class="qa-answer">
+<p>No, and it does not pretend to be. There is no login, because without a server there is nothing to check a password against, and the page says it is a demonstration. In a real site, the dashboard would sit behind a staff login and the data would come from a server, which refuses requests from anyone who is not signed in.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="csv">
+        <summary>What is special about the CSV export?</summary>
+        <div class="qa-answer">
+<p>Spreadsheets treat any cell starting with <code>=</code>, <code>+</code>, <code>-</code> or <code>@</code> as a formula, which could be used to run something nasty from a name someone typed into a form (CSV injection). The exporter puts an apostrophe in front of such cells and escapes quotes, so a name is always shown as plain text.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="contact-form">
+        <summary>What happens when someone sends a message on the contact page?</summary>
+        <div class="qa-answer">
+<p>The message is checked by the browser, saved in <code>nb:messages</code> with a status of new, and a thank-you panel replaces the form. Nothing is emailed, because a static site cannot send mail. The staff dashboard lists it, and staff can mark it read or delete it.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="reset">
+        <summary>What does Reset demo data do?</summary>
+        <div class="qa-answer">
+<p>It clears the four saved items and puts the demo member back, so the site returns to a clean state, for example before a presentation. It sits in Demo tools on My bookings and on the staff dashboard, and asks for confirmation inside the page, because it cannot be undone.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="open-folder">
+        <summary>Can I open the site straight from the folder, without a web server?</summary>
+        <div class="qa-answer">
+<p>Yes, for reading every page. For the booking system it depends on the browser. Chrome, Edge and Brave let all local files share one saved-data area, so bookings work. Firefox may keep each local file's data apart, so a booking made on one page might not be found on the next. In that case, use the live website, or start a tiny local server inside the project folder with <code>python3 -m http.server</code> and open <code>http://localhost:8000</code>. The booking pages show a short notice when they detect they were opened from a folder.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="no-js">
+        <summary>Does the site work without JavaScript?</summary>
+        <div class="qa-answer">
+<p>All the information pages work with JavaScript off: the content is plain HTML, the Q&amp;A boxes open natively and links work. The pages that need to run code (booking, summary, My bookings, the staff dashboard) say so and give the phone number instead. Extras like the event filter and the join form are only shown when JavaScript is available. This approach is called progressive enhancement: start with something that works for everyone, then add features for browsers that can run them.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="js" aria-labelledby="js-title">
+      <h2 id="js-title">JavaScript and code</h2>
+      <p class="qa-group-intro">For questions about how the code is organised.</p>
+      <details class="qa-item" id="files">
+        <summary>Which file does what?</summary>
+        <div class="qa-answer">
+<div class="table-wrap"><table class="prices stack">
+<caption>The JavaScript files in assets/js</caption>
+<thead><tr><th scope="col">File</th><th scope="col">Job</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-label="File">data.js</th><td data-label="Job">Prices, events, capacities and opening hours, in one place.</td></tr>
+<tr><th scope="row" data-label="File">pricing.js</th><td data-label="Job">Price rules, opening-hours checks, cancellation rules and a safe element builder.</td></tr>
+<tr><th scope="row" data-label="File">store.js</th><td data-label="Job">The browser back end: saves bookings, members and messages in localStorage.</td></tr>
+<tr><th scope="row" data-label="File">availability.js</th><td data-label="Job">What is free: real bookings plus simulated customers, and event places.</td></tr>
+<tr><th scope="row" data-label="File">booking.js</th><td data-label="Job">The booking form: validation, live price, member check, saving.</td></tr>
+<tr><th scope="row" data-label="File">confirmation.js</th><td data-label="Job">The summary page for one reference.</td></tr>
+<tr><th scope="row" data-label="File">my-bookings.js</th><td data-label="Job">Lists, searches and cancels bookings.</td></tr>
+<tr><th scope="row" data-label="File">staff.js</th><td data-label="Job">The dashboard, including the CSV export.</td></tr>
+<tr><th scope="row" data-label="File">calendar.js</th><td data-label="Job">Builds the .ics calendar file.</td></tr>
+<tr><th scope="row" data-label="File">membership.js</th><td data-label="Job">The join form and member numbers.</td></tr>
+<tr><th scope="row" data-label="File">contact.js</th><td data-label="Job">Saves contact messages.</td></tr>
+<tr><th scope="row" data-label="File">places.js</th><td data-label="Job">"Places left" lines on the Events page.</td></tr>
+<tr><th scope="row" data-label="File">main.js</th><td data-label="Job">Mobile menu, events filter and the footer year.</td></tr>
+<tr><th scope="row" data-label="File">qa.js</th><td data-label="Job">The search and expand buttons on this page.</td></tr>
+</tbody></table></div>
+<p>Each page loads only the files it needs. The order matters: <code>data.js</code> and <code>pricing.js</code> first, because the others read from them.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="dom">
+        <summary>What is the DOM and how does the code use it?</summary>
+        <div class="qa-answer">
+<p>The DOM (Document Object Model) is the browser's live tree of the page. JavaScript finds elements (<code>document.getElementById</code>), reads and changes them (<code>textContent</code>, <code>hidden</code>, <code>disabled</code>) and listens for events such as <code>input</code>, <code>change</code>, <code>click</code> and <code>submit</code>. The booking form listens for any change and recalculates the price, the availability and the validation messages every time.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="iife">
+        <summary>Why is every script wrapped in a function that calls itself?</summary>
+        <div class="qa-answer">
+<p>The pattern <code>(function () { ... }());</code> keeps variables private to each file, so two scripts can both have a variable called <code>form</code> without clashing. Each file shares only what it needs by attaching one object to <code>window</code>, such as <code>window.NBStore</code> or <code>window.NB</code>. It was chosen over ES modules so the site also works when you open the files straight from a folder, where browsers block module imports.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="safe-dom">
+        <summary>How does the code avoid cross-site scripting (XSS)?</summary>
+        <div class="qa-answer">
+<p>XSS happens when text typed by a user is inserted into the page as HTML, so a name like <code>&lt;img onerror=...&gt;</code> would run code. Here, anything that came from a user (names, emails, notes, messages) is only ever put on the page with <code>textContent</code>, or through the small helper <code>NB.el()</code>, which sets text as text. The one place that uses <code>innerHTML</code> restores a fixed hint written by the site itself, not user input. There are no third-party scripts, no <code>eval</code> and no inline event handlers.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="validation">
+        <summary>Where is the form validated, and is that enough?</summary>
+        <div class="qa-answer">
+<p>In the browser, in two layers: the built-in HTML checks (required fields, email format, number limits) and custom checks in <code>booking.js</code> (opening hours, closed days, availability, member number, event places). It is enough for a demonstration, but not for a real shop: a visitor can change anything in their own browser's developer tools, so a real site must repeat every check on the server and recalculate the price there. The browser checks are only there to help honest users get it right quickly.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="date-handling">
+        <summary>How does the code deal with dates and times?</summary>
+        <div class="qa-answer">
+<p>Dates are kept as plain <code>YYYY-MM-DD</code> text and built into dates with the year, month and day as separate numbers, which avoids the time-zone shifts that happen when a date string is parsed as UTC. Opening hours are checked as whole hours. Weekends are found with <code>getDay()</code>. The booking date is limited by the date field's <code>min</code> (today) and <code>max</code> (one year ahead).</p>
+        </div>
+      </details>
+      <details class="qa-item" id="hash">
+        <summary>What is the formula behind the simulated availability?</summary>
+        <div class="qa-answer">
+<p>It is a small text hash (FNV-1a, a few lines of code). The text <code>"use|pitch|2026-12-02|18"</code> is turned into a number between 0 and 1, and if that number is below the chance of being busy (about 55% in busy hours and 20% in quiet ones), the facility is used by a stranger. Because the same text always gives the same number, the answer never changes between visits, and no random numbers or saved data are needed.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="quality" aria-labelledby="quality-title">
+      <h2 id="quality-title">Accessibility, privacy and security</h2>
+      <p class="qa-group-intro">Making it usable and safe for everyone.</p>
+      <details class="qa-item" id="a11y">
+        <summary>What accessibility features does it have?</summary>
+        <div class="qa-answer">
+<ul>
+<li>A skip link, landmarks and one <code>h1</code> per page.</li>
+<li>Visible keyboard focus on every control, and everything can be used without a mouse.</li>
+<li>Labels on every form field, error messages written in words, and a live region (<code>aria-live</code>) that announces availability changes.</li>
+<li><code>aria-expanded</code> on the menu button, and focus moved to the confirmation or the success message after an action.</li>
+<li>Descriptive <code>alt</code> text for each picture, and tables with a caption and <code>th scope</code>.</li>
+<li>Colour contrast checked against WCAG AA, and statuses that always include a word.</li>
+<li>Reduced-motion support: the hero animation and smooth scrolling switch off for visitors who ask for less motion.</li>
+</ul>
+        </div>
+      </details>
+      <details class="qa-item" id="privacy-data">
+        <summary>What personal data is collected, and where does it go?</summary>
+        <div class="qa-answer">
+<p>Name, email, optional phone and notes, when someone books, joins or sends a message. It is saved only in that visitor's browser (localStorage) and never leaves the device. There are no cookies, no analytics, no adverts and no third-party requests of any kind. The Privacy page says the same, and Reset (or clearing the site data in the browser) removes it all.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="secrets">
+        <summary>Is anything sensitive stored?</summary>
+        <div class="qa-answer">
+<p>No passwords, no payment details and no ID documents. localStorage can be read by any script on the same site and by the person using the browser, so it is only suitable for things like these demonstration bookings. Nothing is taken online: payment is at the front desk.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="devtools">
+        <summary>Could someone change the data or the prices in the browser tools?</summary>
+        <div class="qa-answer">
+<p>Yes, and that is a good question to raise. Anything that runs in the browser can be edited by the person using it. For this demonstration, that only affects their own copy. In a real shop, the server must hold the real prices and availability and recalculate the total itself, never trusting a total sent from the page.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="third-party">
+        <summary>Does the site load anything from other websites?</summary>
+        <div class="qa-answer">
+<p>No. Fonts, images, scripts and styles are all local files, so there is nothing to track visitors, nothing that can break when another service goes down, and no cookie banner is needed.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="testing" aria-labelledby="testing-title">
+      <h2 id="testing-title">Testing and quality checks</h2>
+      <p class="qa-group-intro">How we know it works.</p>
+      <details class="qa-item" id="how-tested">
+        <summary>How was it tested?</summary>
+        <div class="qa-answer">
+<ul>
+<li><strong>Screenshots</strong> at phone, tablet and desktop widths in a real browser, checked page by page (and the home page also in Firefox).</li>
+<li><strong>Automated logic tests</strong> for the price rules, availability, the saved data and the cancellation rules. Run them with <code>node tools/test_logic.js</code>.</li>
+<li><strong>End-to-end checks</strong> in a headless browser that fill in the real forms: book, view the summary, cancel, join, send a message and read it on the staff dashboard.</li>
+<li><strong>A page checker</strong> (<code>python3 tools/check_site.py .</code>) that checks every page's structure, links, images and labels, and runs on GitHub on every push.</li>
+<li><strong>A contrast script</strong> for the colour pairs.</li>
+</ul>
+        </div>
+      </details>
+      <details class="qa-item" id="validator">
+        <summary>Was the HTML validated?</summary>
+        <div class="qa-answer">
+<p>The page checker catches the common mistakes the validator would: unbalanced or misplaced tags, duplicate ids, missing <code>alt</code> or labels, skipped heading levels, broken links and anchors. For the official check, paste the live address into the W3C validator at <a href="https://validator.w3.org/">validator.w3.org</a>.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="browsers">
+        <summary>Which browsers does it work in?</summary>
+        <div class="qa-answer">
+<p>It was checked in Chromium (Chrome, Edge and Brave use the same engine) and Firefox. It uses only long-established features, so recent versions of Safari should be fine too, but it was not tested there.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="hardest">
+        <summary>What was the hardest part?</summary>
+        <div class="qa-answer">
+<p>Keeping a lot of rules consistent without a server: the same price on the Prices page, the booking form and the summary; the same "places left" on the Events page and in the form; a hall that two sports share; and making cancelled bookings free their space again everywhere. The answer was to put each rule in exactly one function and have every page call it.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="hosting" aria-labelledby="hosting-title">
+      <h2 id="hosting-title">Hosting, Git and licence</h2>
+      <p class="qa-group-intro">How it is published.</p>
+      <details class="qa-item" id="github-pages">
+        <summary>How is it hosted?</summary>
+        <div class="qa-answer">
+<p>On GitHub Pages, which serves static files for free. A workflow in <code>.github/workflows/pages.yml</code> runs on every push to the main branch, copies the HTML files and the <code>assets</code> folder into a clean folder, and publishes that. All links in the site are relative, so it works at an address like <code>username.github.io/repository-name/</code>.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="where-code">
+        <summary>Where can I see the source code and the live website?</summary>
+        <div class="qa-answer">
+<ul>
+<li><strong>Source code:</strong> <a href="https://github.com/md8-habibullah/northbank-sports-hub">github.com/md8-habibullah/northbank-sports-hub</a></li>
+<li><strong>Live website:</strong> <a href="https://md8-habibullah.github.io/northbank-sports-hub/">md8-habibullah.github.io/northbank-sports-hub</a></li>
+</ul>
+<p>The repository's README explains how to run, check and change the site.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="workflows">
+        <summary>What do the two GitHub workflows do?</summary>
+        <div class="qa-answer">
+<p><code>pages.yml</code> deploys the site. <code>check.yml</code> runs the page checker and the logic tests on every push and pull request, so a broken link, a missing label or a changed price rule is caught before it goes live.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="git">
+        <summary>What are Git and GitHub?</summary>
+        <div class="qa-answer">
+<p>Git is the tool that records every version of the files, so changes can be compared and undone. GitHub is a website that stores a Git project online and can host it. The repository holds the pages, scripts, styles, images and workflows, and the README explains how to run and change the site.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="licence">
+        <summary>What licence does the project have?</summary>
+        <div class="qa-answer">
+<p>The MIT licence: anyone may use, copy and change the code, as long as the licence notice stays with it. It suits a small learning project. The invented names, prices and events carry no real meaning.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="limits" aria-labelledby="limits-title">
+      <h2 id="limits-title">Limits and what comes next</h2>
+      <p class="qa-group-intro">What it does not do, and how it could grow.</p>
+      <details class="qa-item" id="not-real">
+        <summary>What is not real?</summary>
+        <div class="qa-answer">
+<ul>
+<li>There is no server, so data lives in one browser and is not shared across devices or people.</li>
+<li>Other customers' bookings are simulated by a formula.</li>
+<li>No payment is taken and no email or text message is sent.</li>
+<li>The staff dashboard has no login.</li>
+<li>Member numbers only work in the browser that created them (apart from the demo member).</li>
+<li>The centre, its events, prices and contact details are made up.</li>
+</ul>
+<p>The site says so wherever it matters, so nobody is misled.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="go-real">
+        <summary>How would you turn it into a real full-stack site?</summary>
+        <div class="qa-answer">
+<ol>
+<li>Replace <code>store.js</code> with calls to a server API (for example <code>POST /api/bookings</code>, <code>GET /api/availability</code>). The rest of the site would keep working, because it only talks to the store through a handful of functions.</li>
+<li>Run a server (Node.js, Python or similar) with a database such as PostgreSQL or MongoDB for bookings, members and messages.</li>
+<li>Check availability and calculate the price on the server, in one database transaction, so two people cannot book the same slot.</li>
+<li>Add staff login, with passwords stored hashed, and protect the dashboard routes.</li>
+<li>Add online payment through a provider, and confirmation emails.</li>
+<li>Keep the browser checks, because they give instant feedback, but never rely on them.</li>
+</ol>
+        </div>
+      </details>
+      <details class="qa-item" id="improve">
+        <summary>What would you improve with more time?</summary>
+        <div class="qa-answer">
+<ul>
+<li>A dark theme using the existing colour variables.</li>
+<li>A weekly calendar view of availability.</li>
+<li>Rescheduling a booking, not only cancelling it.</li>
+<li>A waiting list for full events.</li>
+<li>More automated browser tests, run on every push.</li>
+<li>Real photos, with responsive <code>srcset</code> images, if the centre supplied them.</li>
+</ul>
+        </div>
+      </details>
+      <details class="qa-item" id="different">
+        <summary>What would you do differently?</summary>
+        <div class="qa-answer">
+<p>Decide the data model (what a booking, member and event look like) before drawing any page, because every page then reads from it. This project ended up there, but in a later step. The first version also kept the summary in sessionStorage, and moving to a store with references and statuses was the change that made cancelling, availability and the dashboard possible.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="qa-group" id="basics" aria-labelledby="basics-title">
+      <h2 id="basics-title">Quick answers to common exam questions</h2>
+      <p class="qa-group-intro">Short definitions, with an example from this site.</p>
+      <details class="qa-item" id="q-mobile-first">
+        <summary>What does mobile first mean?</summary>
+        <div class="qa-answer">
+<p>Writing the CSS for the smallest screen first, then adding rules for larger screens with <code>min-width</code> media queries. Here the phone layout is the default, and tablet and desktop layouts add columns on top.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-media-query">
+        <summary>What is a media query?</summary>
+        <div class="qa-answer">
+<p>A CSS rule that only applies when a condition is true, usually the screen width. <code>@media (min-width: 62em) { ... }</code> applies its rules from about 992 px wide.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-api">
+        <summary>What is an API?</summary>
+        <div class="qa-answer">
+<p>A set of functions or web addresses that one program offers to another. <code>NBStore.bookings.add()</code> is a small API: the booking form does not know how data is saved, only which function to call. A real site would offer an API over the internet and keep the same shape.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-event">
+        <summary>What is an event listener?</summary>
+        <div class="qa-answer">
+<p>A function the browser calls when something happens, such as a click or a change. <code>form.addEventListener('input', update)</code> runs <code>update</code> every time anything in the booking form changes.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-progressive">
+        <summary>What is progressive enhancement?</summary>
+        <div class="qa-answer">
+<p>Building so the basics work everywhere, then adding extras where the browser supports them. The information pages are plain HTML. JavaScript adds the filter, the live price and the saved bookings.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-crud">
+        <summary>What is CRUD, and where is it in this project?</summary>
+        <div class="qa-answer">
+<p>Create, Read, Update, Delete: the four basic things you do with stored data. Create is a new booking, read is My bookings, update is a booking's status changing to cancelled or checked in, and delete is removing a message or resetting the demo.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-frontback">
+        <summary>What is the difference between front end and back end?</summary>
+        <div class="qa-answer">
+<p>The front end is what runs in the visitor's browser: the HTML, CSS and JavaScript they see and click. The back end runs on a server: it stores data, checks rules, sends emails and takes payment. This project has a complete front end and a back end that is simulated inside the browser.</p>
+        </div>
+      </details>
+      <details class="qa-item" id="q-accessible">
+        <summary>What is accessibility and why does it matter?</summary>
+        <div class="qa-answer">
+<p>Making the site usable by people with different abilities and devices: screen readers, keyboard only, low vision, motor difficulties, small screens. It matters because everyone benefits and in many places it is a legal duty. Examples here: labels on all fields, visible focus, enough contrast, alt text.</p>
+        </div>
+      </details>
+    </section>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer on-ink">
+  <div class="wrap footer-qa">
+    <p><strong>Marking or reviewing this project?</strong> The Project Q&amp;A explains how it was built and answers the questions a teacher is likely to ask.</p>
+    <a class="btn btn-primary" href="qa.html">Open the Project Q&amp;A</a>
+  </div>
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
+      <p>A community sports centre on the river: pitches, a sports hall, tennis courts, a 25 m pool and a running track.</p>
+    </div>
+    <nav aria-label="Site pages">
+      <h2 class="footer-h">Explore</h2>
+      <ul class="footer-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="booking.html">Book now</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms and conditions</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="footer-h">Visit us</h2>
+      <address>12 Riverside Walk<br>Northbank<br>NB1 4AB</address>
+      <p>Phone: <a href="tel:+442079460123">020 7946 0123</a><br>Email: <a href="mailto:hello@northbank-hub.example">hello@northbank-hub.example</a></p>
+    </div>
+    <div>
+      <h2 class="footer-h">Opening hours</h2>
+      <dl class="footer-hours">
+        <div><dt>Mon to Fri</dt><dd>07:00 to 22:00</dd></div>
+        <div><dt>Sat and Sun</dt><dd>08:00 to 20:00</dd></div>
+        <div><dt>25 and 26 Dec</dt><dd>Closed</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
+    <ul>
+      <li><a href="my-bookings.html">My bookings</a></li>
+      <li><a href="staff.html">Staff dashboard (demo)</a></li>
+      <li><a href="terms.html">Terms and conditions</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

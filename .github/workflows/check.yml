@@ -17,3 +17,8 @@ jobs:
       # unlabelled form field or unbalanced tag.
       - name: Check pages, links and images
         run: python3 tools/check_site.py .
+
+      # Fails the run if the price rules, saved data, availability, cancellation
+      # rules or calendar file break, or if the Prices page drifts from data.js.
+      - name: Test the booking logic
+        run: node tools/test_logic.js

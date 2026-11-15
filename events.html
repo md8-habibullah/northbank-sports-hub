@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script>document.documentElement.classList.add("js");</script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/pricing.js" defer></script>
+<script src="assets/js/store.js" defer></script>
+<script src="assets/js/availability.js" defer></script>
+<script src="assets/js/places.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -66,6 +71,7 @@
     <h3>Winter Open Day</h3>
     <p>Free taster sessions in every sport, a splash hour in the pool and a tour for new members.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2026-11-28">Sat 28 Nov 2026</time>, 10:00 to 16:00</dd></div><div><dt>Where</dt><dd>Whole Hub</dd></div><div><dt>Watching</dt><dd>Free</dd></div><div><dt>Playing</dt><dd>Join in for free</dd></div></dl>
+    <p class="places" data-places="open-day"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="multi">All sports</span>
@@ -80,6 +86,7 @@
     <h3>Winter Five-a-side Cup</h3>
     <p>Sixteen teams play for the Northbank Cup. Group games in the morning, knockouts after lunch.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2026-12-05">Sat 5 Dec 2026</time>, 10:00 to 17:00</dd></div><div><dt>Where</dt><dd>3G pitches 1 and 2</dd></div><div><dt>Watching</dt><dd>From £4</dd></div><div><dt>Playing</dt><dd>£60 per team</dd></div></dl>
+    <p class="places" data-places="winter-cup"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="football">Football</span>
@@ -94,6 +101,7 @@
     <h3>Open Badminton Doubles</h3>
     <p>Doubles for every level, in three divisions so everyone gets competitive games.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2026-12-13">Sun 13 Dec 2026</time>, 09:00 to 18:00</dd></div><div><dt>Where</dt><dd>Sports hall, courts 1 to 6</dd></div><div><dt>Watching</dt><dd>From £4</dd></div><div><dt>Playing</dt><dd>£16 per pair</dd></div></dl>
+    <p class="places" data-places="doubles"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="badminton">Badminton</span>
@@ -108,6 +116,7 @@
     <h3>Swim-a-thon</h3>
     <p>Swim as many lengths as you can in a 30-minute slot and raise money for the local food bank.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2026-12-19">Sat 19 Dec 2026</time>, 08:00 to 14:00</dd></div><div><dt>Where</dt><dd>25 m pool</dd></div><div><dt>Watching</dt><dd>Free</dd></div><div><dt>Playing</dt><dd>£10 per swimmer</dd></div></dl>
+    <p class="places" data-places="swim"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="swimming">Swimming</span>
@@ -122,6 +131,7 @@
     <h3>New Year 5K Fun Run</h3>
     <p>Start the year with a 5 km loop along the river. Walkers and buggies are welcome.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2027-01-01">Fri 1 Jan 2027</time>, 10:00 to 12:30</dd></div><div><dt>Where</dt><dd>Track and riverside loop</dd></div><div><dt>Watching</dt><dd>Free</dd></div><div><dt>Playing</dt><dd>£12 per runner</dd></div></dl>
+    <p class="places" data-places="run"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="running">Running</span>
@@ -136,6 +146,7 @@
     <h3>Junior Basketball Slam</h3>
     <p>Under-14 teams of five play a round-robin, with a coached warm-up for every team.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2027-01-09">Sat 9 Jan 2027</time>, 10:30 to 16:00</dd></div><div><dt>Where</dt><dd>Sports hall</dd></div><div><dt>Watching</dt><dd>From £4</dd></div><div><dt>Playing</dt><dd>£45 per team</dd></div></dl>
+    <p class="places" data-places="slam"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="basketball">Basketball</span>
@@ -150,6 +161,7 @@
     <h3>Club Tennis Championships</h3>
     <p>Singles and doubles over a weekend, with spectators welcome courtside. Weather permitting.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2027-01-23">Sat 23</time> and <time datetime="2027-01-24">Sun 24 Jan 2027</time>, 09:00 to 17:00 each day</dd></div><div><dt>Where</dt><dd>Floodlit courts 1 to 4</dd></div><div><dt>Watching</dt><dd>From £4</dd></div><div><dt>Playing</dt><dd>£14 per player</dd></div></dl>
+    <p class="places" data-places="champs"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="tennis">Tennis</span>
@@ -164,6 +176,7 @@
     <h3>Schools Futsal Finals</h3>
     <p>Eight schools, a fast game and plenty of noise from the sidelines. Entry is by invitation.</p>
     <dl class="meta"><div><dt>When</dt><dd><time datetime="2027-02-06">Sat 6 Feb 2027</time>, 13:00 to 18:00</dd></div><div><dt>Where</dt><dd>Sports hall</dd></div><div><dt>Watching</dt><dd>From £4</dd></div><div><dt>Playing</dt><dd>By invitation</dd></div></dl>
+    <p class="places" data-places="futsal"></p>
   </div>
   <div class="fixture-side">
     <span class="tag" data-sport="football">Football</span>
@@ -214,6 +227,10 @@
 
 </main>
 <footer class="site-footer on-ink">
+  <div class="wrap footer-qa">
+    <p><strong>Marking or reviewing this project?</strong> The Project Q&amp;A explains how it was built and answers the questions a teacher is likely to ask.</p>
+    <a class="btn btn-primary" href="qa.html">Open the Project Q&amp;A</a>
+  </div>
   <div class="wrap footer-grid">
     <div class="footer-about">
       <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
@@ -250,6 +267,8 @@
   <div class="wrap footer-base">
     <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
     <ul>
+      <li><a href="my-bookings.html">My bookings</a></li>
+      <li><a href="staff.html">Staff dashboard (demo)</a></li>
       <li><a href="terms.html">Terms and conditions</a></li>
       <li><a href="privacy.html">Privacy</a></li>
     </ul>

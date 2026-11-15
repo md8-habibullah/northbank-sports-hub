@@ -1,89 +1,85 @@
-/* Confirmation page: rebuilds the booking summary from the browser's session storage.
-   The price is recalculated here from the shared price data, not read from the form. */
+/* Booking summary page. The reference in the address (confirmation.html?ref=NB-XXXXXX)
+   is looked up in the browser store, so the page still works after a reload or a later visit. */
 (function () {
   'use strict';
 
   var D = window.NB_DATA;
   var NB = window.NB;
+  var Store = window.NBStore;
+  var Cal = window.NBCalendar;
   var found = document.getElementById('confirmation');
   var missing = document.getElementById('no-booking');
-  if (!found || !missing || !D || !NB) return;
+  if (!found || !missing || !D || !NB || !Store) return;
 
-  var payload = null;
-  try {
-    var raw = window.sessionStorage.getItem('nb-booking');
-    payload = raw ? JSON.parse(raw) : null;
-  } catch (e) { payload = null; }
-
-  var result = null;
-  if (payload && payload.sel) {
-    result = payload.mode === 'hire' ? NB.hire(payload.sel) : NB.tickets(payload.sel);
-  }
-  if (!result) {
+  var ref = '';
+  try { ref = new URLSearchParams(window.location.search).get('ref') || ''; } catch (e) { ref = ''; }
+  var b = ref ? Store.bookings.find(ref) : null;
+  if (!b) {
     missing.hidden = false;
     return;
   }
 
-  function makeRef(seed) {
-    var h = 5381;
-    for (var i = 0; i < seed.length; i++) h = ((h << 5) + h + seed.charCodeAt(i)) >>> 0;
-    var s = h.toString(36).toUpperCase();
-    while (s.length < 6) s = '0' + s;
-    return 'NB-' + s.slice(-6);
-  }
-
-  function add(dl, term, value) {
-    if (!value) return;
-    var wrap = document.createElement('div');
-    var dt = document.createElement('dt');
-    var dd = document.createElement('dd');
-    dt.textContent = term;
-    dd.textContent = value;
-    wrap.appendChild(dt);
-    wrap.appendChild(dd);
-    dl.appendChild(wrap);
-  }
-
-  var sel = payload.sel;
-  var person = payload.person || {};
   var details = document.getElementById('summary-details');
-  var f;
-
-  if (payload.mode === 'hire') {
-    f = D.facilities[sel.facility];
-    add(details, 'What you booked', f.name + ' hire');
-    add(details, 'Date', NB.formatDate(sel.date));
-    add(details, 'Time', NB.pad(sel.start) + ':00 to ' + NB.pad(sel.start + sel.hours) + ':00 (' +
-      sel.hours + ' hour' + (sel.hours > 1 ? 's' : '') + ')');
-    add(details, 'How many', sel.units + ' ' + NB.plural(f.unit, sel.units));
-    add(details, 'Extras', sel.equipment ? 'Equipment pack' : 'None');
-    if (sel.member) add(details, 'Membership', 'Member discount applied. Bring your membership card.');
-  } else {
-    var ev = D.events[sel.event];
-    add(details, 'What you booked', ev.name);
-    add(details, 'Date', NB.formatDate(ev.date));
+  function add(term, value) {
+    if (!value) return;
+    details.appendChild(NB.el('div', null, [NB.el('dt', { text: term }), NB.el('dd', { text: value })]));
   }
-  add(details, 'Name', person.name);
-  add(details, 'Email', person.email);
-  add(details, 'Phone', person.phone);
-  add(details, 'Notes', person.notes);
+
+  document.getElementById('reference').textContent = b.ref;
+
+  var status = document.getElementById('status-line');
+  status.textContent = b.status === 'cancelled' ? 'Cancelled' : 'Confirmed';
+  status.className = 'status status-' + b.status;
+
+  if (b.type === 'hire') {
+    var f = D.facilities[b.sel.facility];
+    add('What you booked', f.name + ' hire');
+    add('Date', NB.formatDate(b.sel.date));
+    add('Time', NB.pad(b.sel.start) + ':00 to ' + NB.pad(b.sel.start + b.sel.hours) + ':00 (' +
+      b.sel.hours + ' hour' + (b.sel.hours > 1 ? 's' : '') + ')');
+    add('How many', b.sel.units + ' ' + NB.plural(f.unit, b.sel.units));
+    add('Extras', b.sel.equipment ? 'Equipment pack' : 'None');
+    if (b.sel.memberNumber) add('Member number', b.sel.memberNumber + '. Bring your membership card.');
+  } else {
+    var ev = D.events[b.sel.event];
+    add('What you booked', ev.name);
+    add('Date', ev.date === ev.endDate
+      ? NB.formatDate(ev.date)
+      : NB.formatDate(ev.date) + ' to ' + NB.formatDate(ev.endDate));
+    add('Time', ev.startTime + ' to ' + ev.endTime + (ev.date === ev.endDate ? '' : ' each day'));
+    add('Where', ev.where);
+  }
+  add('Name', b.person.name);
+  add('Email', b.person.email);
+  add('Phone', b.person.phone);
+  add('Notes', b.person.notes);
+  add('Booked on', new Date(b.created).toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'short' }));
 
   var list = document.getElementById('summary-lines');
-  result.lines.forEach(function (l) {
-    var li = document.createElement('li');
-    var a = document.createElement('span');
-    var b = document.createElement('span');
-    a.textContent = l.label;
-    b.textContent = NB.fmt(l.amount);
-    li.appendChild(a);
-    li.appendChild(b);
-    list.appendChild(li);
+  b.lines.forEach(function (l) {
+    list.appendChild(NB.el('li', null, [NB.el('span', { text: l.label }), NB.el('span', { text: NB.fmt(l.amount) })]));
   });
-  document.getElementById('summary-total').textContent = result.total === 0 ? 'Free' : NB.money(result.total);
-  document.getElementById('reference').textContent = makeRef((payload.created || '') + (person.name || '') + (person.email || ''));
+  document.getElementById('summary-total').textContent = b.total === 0 ? 'Free' : NB.money(b.total);
 
-  found.hidden = false;
+  var policy = NB.cancellation(b);
+  var note = document.getElementById('cancel-note');
+  if (b.status === 'cancelled') {
+    note.textContent = 'This booking was cancelled' + (b.fee ? '. ' + NB.money(b.fee) + ' is still payable as a late cancellation fee.' : ' with nothing to pay.');
+  } else {
+    note.textContent = policy.message;
+  }
+
+  document.getElementById('manage-link').setAttribute('href', 'my-bookings.html#' + b.ref);
+
+  var calBtn = document.getElementById('cal-btn');
+  if (b.status === 'cancelled' || !Cal) {
+    calBtn.hidden = true;
+  } else {
+    calBtn.addEventListener('click', function () { Cal.download(b); });
+  }
 
   var print = document.getElementById('print-btn');
   if (print) print.addEventListener('click', function () { window.print(); });
+
+  found.hidden = false;
 }());

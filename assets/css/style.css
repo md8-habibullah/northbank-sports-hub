@@ -540,6 +540,7 @@ table.hours td, table.hours th { padding-block: 0.55rem; }
     content: attr(data-label);
     display: inline-block;
     min-width: 7rem;
+    margin-right: 0.6rem;
     font-weight: 700;
   }
   table.stack td.num { font-variant-numeric: tabular-nums; }
@@ -579,6 +580,7 @@ legend { padding: 0 0.4rem; font: 800 1.25rem var(--font-display); }
 .choice .hint { display: block; }
 .small { font-size: 0.93rem; margin: 0.75rem 0 0; }
 .estimate .small { color: #c5d3e0; }
+.estimate .small a { color: #fff; }
 .mt { margin-top: 2rem; }
 .form-title { margin-top: 2rem; }
 .field-row { display: grid; gap: 0 1rem; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
@@ -825,6 +827,144 @@ details > :last-child { margin-bottom: 0; padding-bottom: 1rem; }
 
 /* ---- 404 --------------------------------------------------------------- */
 .notfound img { width: 100%; max-width: 28rem; border: 2px solid var(--ink); border-radius: var(--radius); }
+
+/* ---- Working-site additions: availability, bookings, dashboard, Q&A ----- */
+.js-only { display: none; }
+.js .js-only { display: block; }
+
+code {
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  background: #e6edf2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+/* Footer strip that points markers to the Q&A */
+.footer-qa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+.footer-qa p { margin: 0; max-width: 46rem; }
+
+/* Live availability message on the booking form */
+.avail {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 6px solid var(--green);
+  background: #eef8f1;
+  font-weight: 700;
+}
+.avail:empty { display: none; }
+.avail-low { border-color: var(--yellow); background: #fff7e0; }
+.avail-full { border-color: var(--red); background: #fff1f0; }
+
+/* Places left, on the Events page */
+.places { margin: 0.35rem 0 0; font-size: 0.95rem; font-weight: 700; color: var(--ink); }
+.places::before { content: ""; display: inline-block; width: 0.6rem; height: 0.6rem; margin-right: 0.45rem; border-radius: 50%; background: var(--green); }
+.places-low { color: #8c1f17; }
+.places-low::before { background: var(--yellow); }
+.places-full::before { background: var(--red); }
+
+/* Status chips: always a word, never colour alone */
+.status {
+  display: inline-block;
+  padding: 0.1rem 0.65rem;
+  border: 2px solid currentColor;
+  border-radius: 99px;
+  font: 800 0.9rem var(--font-display);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.status-confirmed { color: #1b6b43; background: #eef8f1; }
+.status-cancelled { color: #a1241b; background: #fff1f0; }
+.status-past { color: var(--ink-soft); background: #eef2f5; }
+
+/* My bookings */
+.bk-search { max-width: 30rem; }
+.booking-list { display: grid; gap: 1rem; margin-bottom: 2rem; }
+.booking-card {
+  padding: 1rem 1.25rem 1.1rem;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-left-width: 8px;
+  border-radius: var(--radius);
+}
+.booking-card:focus { outline: 3px solid var(--blue); outline-offset: 3px; }
+.status-border-confirmed { border-left-color: var(--green); }
+.status-border-cancelled { border-left-color: var(--red); }
+.status-border-past { border-left-color: var(--ink-soft); }
+.booking-card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; }
+.booking-card-head h3 { margin: 0; font-size: 1.35rem; }
+.booking-card .meta { gap: 0.15rem 1.5rem; }
+.booking-note { margin: 0.6rem 0 0; color: var(--ink-soft); }
+.booking-card .btn-row { margin-top: 0.9rem; }
+.cancel-panel {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--red);
+  border-radius: var(--radius);
+  background: #fff7f6;
+}
+.cancel-panel p { margin: 0 0 0.5rem; }
+.cancel-panel .btn-row { margin-top: 0.5rem; }
+.btn-danger { background: #a1241b; border-color: #a1241b; color: #fff; }
+.btn-danger:hover { background: #7d1a13; border-color: #7d1a13; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn:disabled:hover { background: var(--white); color: var(--ink); }
+.btn-row-tight { margin: 0; gap: 0.4rem; }
+.demo-tools { margin-top: 2.5rem; max-width: 42rem; }
+.demo-tools > button { margin-bottom: 1rem; }
+.demo-tools .cancel-panel { margin-bottom: 1rem; }
+
+/* Membership join and form messages */
+.member-number { font: 800 1.5rem var(--font-display); letter-spacing: 0.05em; }
+.form-ok h3 { margin-bottom: 0.4rem; }
+.form-ok > :last-child { margin-bottom: 0; }
+#join { margin-top: 2rem; max-width: 42rem; }
+
+/* Staff dashboard */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.9rem;
+  margin: 0 0 2rem;
+}
+.dash-stats > div { display: flex; flex-direction: column; padding: 0.85rem 1rem; background: var(--white); border: 2px solid var(--ink); border-radius: var(--radius); }
+.dash-stats dd { margin: 0; font: 800 2rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.dash-stats dt { order: 2; margin-top: 0.3rem; font-size: 0.95rem; color: var(--ink-soft); }
+.filters { display: grid; gap: 0 1rem; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); max-width: 48rem; }
+.message-list { display: grid; gap: 1rem; margin: 0 0 2rem; padding: 0; list-style: none; }
+.message { margin: 0; padding: 0.9rem 1.1rem 1rem; background: var(--white); border: 2px solid var(--ink); border-left-width: 8px; border-radius: var(--radius); }
+.message-new { border-left-color: var(--blue); }
+.message-head { margin: 0 0 0.15rem; }
+.message-meta { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--ink-soft); overflow-wrap: anywhere; }
+.message-body { margin: 0 0 0.75rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+#st-bookings td, #st-members td { overflow-wrap: anywhere; }
+#st-bookings th, #st-members th, #st-bookings td.num { white-space: nowrap; overflow-wrap: normal; }
+.dash-section { margin-top: 2.5rem; }
+.cell-sub { font-size: 0.93rem; color: var(--ink-soft); }
+
+/* Project Q&A */
+.qa-top { margin-bottom: 2rem; }
+.qa-bar { display: flex; flex-wrap: wrap; align-items: end; gap: 0.5rem 1.5rem; }
+.qa-search { flex: 1 1 18rem; max-width: 30rem; margin-bottom: 0; }
+.qa-bar .btn-row { margin: 0 0 0.1rem; }
+.qa-count { margin: 0.75rem 0 0; color: var(--ink-soft); }
+.qa-group { margin-top: 3rem; }
+.qa-group > h2 { margin-bottom: 0.3rem; }
+.qa-group-intro { margin: 0 0 1rem; color: var(--ink-soft); }
+.qa-item:target { outline: 3px solid var(--blue); outline-offset: 3px; }
+.qa-answer { max-width: 52rem; padding-top: 0.8rem; }
+.qa-answer > :last-child { margin-bottom: 0; }
+.qa-answer .table-wrap { margin-top: 0.25rem; }
 
 /* ---- Print ------------------------------------------------------------- */
 @media print {

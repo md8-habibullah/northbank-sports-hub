@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff dashboard (demo) | Northbank Sports Hub</title>
+<meta name="description" content="A demonstration staff view of bookings, event places, messages and members.">
+<meta name="theme-color" content="#0c2233">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/pricing.js" defer></script>
+<script src="assets/js/store.js" defer></script>
+<script src="assets/js/availability.js" defer></script>
+<script src="assets/js/staff.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="assets/img/logo.svg" width="40" height="40" alt=""><span>Northbank<br>Sports Hub</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-open">Menu</span><span class="nav-toggle-close">Close</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="booking.html">Book now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-head" aria-labelledby="page-title">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><span aria-current="page">Staff dashboard</span></li></ol></nav>
+    <h1 id="page-title">Staff dashboard (demo)</h1>
+    <p class="lead">The back-office side of the site: every booking, message and member in one place.</p>
+  </div>
+</section>
+<section class="section" aria-label="Staff dashboard">
+  <div class="wrap">
+    <noscript>
+      <p class="callout">The staff dashboard needs JavaScript, because it reads the bookings kept in this browser.</p>
+    </noscript>
+
+    <div class="callout">
+      <p><strong>Demonstration only, and there is no login.</strong> A real staff dashboard would sit behind a login on a server. This one is here to show the other side of the booking system: it reads the same browser storage as the booking form, so every booking, message and member you create on this site appears below straight away.</p>
+    </div>
+    <p class="callout" id="storage-warning" hidden>Your browser is blocking site storage, so nothing can be saved or listed here. Allow site data for this page and reload.</p>
+
+    <p class="callout" data-file-note hidden>You opened this page from a folder on your computer. Some browsers, Firefox in particular, keep the saved data of each local file apart, so a booking may not show up on the next page. If that happens, open the live website, or run <code>python3 -m http.server</code> in the project folder and visit <code>http://localhost:8000</code>.</p>
+
+    <p class="form-ok" id="st-note" role="status" tabindex="-1" hidden></p>
+
+    <h2 id="stats-title">At a glance</h2>
+    <dl class="dash-stats" id="stats" aria-labelledby="stats-title"></dl>
+
+    <section class="dash-section" aria-labelledby="st-bk-title">
+      <h2 id="st-bk-title">Bookings</h2>
+      <div class="filters" role="group" aria-label="Filter bookings">
+        <div class="field">
+          <label for="f-status">Status</label>
+          <select id="f-status">
+            <option value="">All</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-type">Type</label>
+          <select id="f-type">
+            <option value="">All</option>
+            <option value="hire">Facility hire</option>
+            <option value="event">Event</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-search">Search</label>
+          <input type="search" id="f-search" autocomplete="off" placeholder="Name or reference">
+        </div>
+      </div>
+      <p class="callout" id="st-bookings-empty" hidden>No bookings to show. Make one on the <a href="booking.html">booking page</a>, or loosen the filters.</p>
+      <div class="table-wrap" id="st-bookings-wrap">
+        <table class="prices stack">
+          <caption>Bookings saved in this browser, newest first</caption>
+          <thead>
+            <tr><th scope="col">Reference</th><th scope="col">Customer</th><th scope="col">Booking</th><th scope="col">When</th><th scope="col" class="num">Total</th><th scope="col">Status</th><th scope="col">Actions</th></tr>
+          </thead>
+          <tbody id="st-bookings"></tbody>
+        </table>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn" id="export-btn">Export bookings (CSV)</button>
+      </div>
+    </section>
+
+    <section class="dash-section" aria-labelledby="st-ev-title">
+      <h2 id="st-ev-title">Event capacity</h2>
+      <p class="section-intro">Some tickets are already sold, to make the numbers realistic. Your own bookings add to them.</p>
+      <div class="table-wrap">
+        <table class="prices stack">
+          <caption>Tickets and entries sold for each event</caption>
+          <thead>
+            <tr><th scope="col">Event</th><th scope="col">Date</th><th scope="col">Spectators</th><th scope="col">Entries</th></tr>
+          </thead>
+          <tbody id="st-events"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="dash-section" aria-labelledby="st-msg-title">
+      <h2 id="st-msg-title">Messages</h2>
+      <p class="callout" id="st-messages-empty" hidden>No messages yet. Send one from the <a href="contact.html">contact page</a> and it appears here.</p>
+      <ul class="message-list" id="st-messages"></ul>
+    </section>
+
+    <section class="dash-section" aria-labelledby="st-mem-title">
+      <h2 id="st-mem-title">Members</h2>
+      <div class="table-wrap">
+        <table class="prices stack">
+          <caption>Member numbers issued in this browser</caption>
+          <thead>
+            <tr><th scope="col">Number</th><th scope="col">Name</th><th scope="col">Plan</th><th scope="col">Joined</th></tr>
+          </thead>
+          <tbody id="st-members"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="demo-tools">
+      <summary>Demo tools</summary>
+      <p>Reset removes every booking, message and member saved in this browser, and restores the demo member <strong>NBM-0001</strong>.</p>
+      <button type="button" class="btn btn-small" id="reset-btn">Reset demo data</button>
+      <div class="cancel-panel" id="reset-panel" hidden>
+        <p>This clears every booking, message and member saved in this browser. It cannot be undone. Are you sure?</p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-small btn-danger" id="reset-yes">Yes, reset everything</button>
+          <button type="button" class="btn btn-small" id="reset-no">Keep my data</button>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer on-ink">
+  <div class="wrap footer-qa">
+    <p><strong>Marking or reviewing this project?</strong> The Project Q&amp;A explains how it was built and answers the questions a teacher is likely to ask.</p>
+    <a class="btn btn-primary" href="qa.html">Open the Project Q&amp;A</a>
+  </div>
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-brand"><img src="assets/img/logo.svg" width="40" height="40" alt=""> Northbank Sports Hub</p>
+      <p>A community sports centre on the river: pitches, a sports hall, tennis courts, a 25 m pool and a running track.</p>
+    </div>
+    <nav aria-label="Site pages">
+      <h2 class="footer-h">Explore</h2>
+      <ul class="footer-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="booking.html">Book now</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms and conditions</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="footer-h">Visit us</h2>
+      <address>12 Riverside Walk<br>Northbank<br>NB1 4AB</address>
+      <p>Phone: <a href="tel:+442079460123">020 7946 0123</a><br>Email: <a href="mailto:hello@northbank-hub.example">hello@northbank-hub.example</a></p>
+    </div>
+    <div>
+      <h2 class="footer-h">Opening hours</h2>
+      <dl class="footer-hours">
+        <div><dt>Mon to Fri</dt><dd>07:00 to 22:00</dd></div>
+        <div><dt>Sat and Sun</dt><dd>08:00 to 20:00</dd></div>
+        <div><dt>25 and 26 Dec</dt><dd>Closed</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; <span data-year>2026</span> Northbank Sports Hub. A fictional centre made for a web design assignment: the names, prices and events are not real.</p>
+    <ul>
+      <li><a href="my-bookings.html">My bookings</a></li>
+      <li><a href="staff.html">Staff dashboard (demo)</a></li>
+      <li><a href="terms.html">Terms and conditions</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
